@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import HomePageView, AboutPageView, BlogDetailView, BlogCreateView, BlogUpdateView, FormPageView, \
-    BlogDeleteView, NavBarView, MedicineListPageView, HaveMedicineSearchView, NeedMedicineSearchView, DonatePostView, ReceiveDonationPostView
+    BlogDeleteView, NavBarView, HaveMedicineListPageView, HaveMedicineSearchView, NeedMedicineSearchView, DonatePostView, ReceiveDonationPostView, NeedMedicineListPageView
 
 urlpatterns = [
     # home page url pattern
@@ -16,7 +16,8 @@ urlpatterns = [
 
     # other url patterns
     path('about/', AboutPageView.as_view(), name='about'),
-    path('medicine_list/', MedicineListPageView.as_view(), name='medicine_list'),
+    path('have_medicine_list/', HaveMedicineListPageView.as_view(), name='have_medicine_list'),
+    path('need_medicine_list/', NeedMedicineListPageView.as_view(), name='need_medicine_list'),
     path('donate-search/', HaveMedicineSearchView.as_view(), name='donate_search'),
     path('need-search/', NeedMedicineSearchView.as_view(), name='get_donation_search'),
     path('navbar/', NavBarView.as_view(), name='nav'),

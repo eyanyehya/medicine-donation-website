@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+
+    <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
+
+</head>
+<body>
+{% block content %}
+    <div class="container py-5">
+
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+
+                {% for post in posts %}
+
+                    <!-- List group-->
+                    <ul class="list-group shadow">
+
+                    <!-- list group item -->
+                    <a href="{% url 'post_detail' post.pk %}">
+                        <li class="list-group-item">
+                            <!-- Custom content-->
+                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                                <div class="media-body order-2 order-lg-1">
+                                    <h5 class="mt-0 font-weight-bold mb-2">{{ post.medicine_name }}</h5>
+                                    <p class="font-italic text-muted mb-0 small">{{ post.address }}</p>
+                                    <div class="d-flex align-items-center justify-content-between mt-1">
+                                        <h6 class="font-weight-bold my-2">Expires on {{ post.expiry_date }}</h6>
+                                    </div>
+                                </div>
+                                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556485078/shoes-2_g4qame.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                            </div>
+                            <!-- End -->
+                        </li>
+                    </a>
+                    <!-- End -->
+
+                {% endfor %}
+
+                </ul>
+                <!-- End -->
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock content %}
+
+</body>
+</html>

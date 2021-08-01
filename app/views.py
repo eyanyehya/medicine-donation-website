@@ -32,9 +32,15 @@ class BlogDetailView(DetailView):
     context_object_name = 'post'
 
 
-class MedicineListPageView(ListView):
+class HaveMedicineListPageView(ListView):
     model = HaveMedicinePost
-    template_name = 'medicine_list.html'
+    template_name = 'have_medicine_list.html'
+    context_object_name = 'posts'
+
+
+class NeedMedicineListPageView(ListView):
+    model = NeedMedicinePost
+    template_name = 'need_medicine_list.html'
     context_object_name = 'posts'
 
 
