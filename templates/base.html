@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <!--  Meta  -->
+    <meta charset="UTF-8" />
+    <title>{% block title %}Home{% endblock %}</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+    <!--  Styles  -->
+
+    {#    CSS LINK FOR THE HOME #}
+    <link href="{% static 'css/form.css' %}" rel="stylesheet">
+
+    {#    CSS LINK FOR THE HOME #}
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@800;900&display=swap" rel="stylesheet">
+
+    {#    CSS LINK FOR LIST OF POSTS#}
+    <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
+
+    {#    CSS LINK FOR SEARCH BAR#}
+    <link href="{% static 'css/search_bar.css' %}" rel="stylesheet">
+
+
+    {#    CSS LINK AND BOOTSTRAP FOR THE NAVBAR#}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+</head>
+
+<body>
+{% include 'navbar.html' %}
+<!--
+
+  Wow! What do you want to build?
+
+  You have so many possibilities right now... Looking for something to kick off?
+  How about a simple folio page to show off everything you're going to make!
+
+-->
+
+<!-- Bootstrap core JavaScript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Scripts -->
+<script src="scripts/index.js"></script>
+
+
+{#    <header>#}
+{#        <div class="nav-left">#}
+{#          <h1><a href="{% url 'home' %}">Django blog</a></h1>#}
+{#        </div>#}
+{#        <div class="nav-right">#}
+{#          <a href="{% url 'post_new' %}">+ New Blog Post</a>#}
+{#        </div>#}
+{#      </header>#}
+
+{#    {% if user.is_authenticated %}#}
+{#        <p>Hi {{ user.username }}</p>#}
+{#        <p><a href="{% url 'logout' %}">Log Out</a></p>#}
+{#    {% else %}#}
+{#        <p>You are not logged in.</p>#}
+{#        <a href="{% url 'login' %}">Log In</a>#}
+{#    {% endif %}#}
+
+
+
+
+{% block content %}
+{% endblock content %}
+
+</body>
+
+</html>

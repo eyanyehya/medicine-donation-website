@@ -1,0 +1,63 @@
+{% url 'about' as about %}
+{% url 'home' as home %}
+{% url 'post_new' as post_new %}
+{% url 'signup' as signup %}
+{% url 'login' as login %}
+{% load static %}
+
+
+ {% comment %}TODO expand the navbar to be full width + understand the css file and delete the unnecessary code.{% endcomment %}
+<header class="main-header">
+    <div class="container-fluid">
+        <nav id="navbar" class="navbar navbar-expand-lg main-nav py-1 py-lg-3">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="../logo.svg" alt="logo2">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar icon-bar-1"></span>
+                <span class="icon-bar icon-bar-2"></span>
+                <span class="icon-bar icon-bar-3"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul id="list_of_links" class="navbar-nav ml-auto text-uppercase f1">
+                    <li>
+                        <a href="{% url 'home' %}" class="{% if request.path == home %}active{% endif %}">home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}" class="{% if request.path == about %}active{% endif %}">about us</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'post_new' %}" class="{% if request.path == post_new %}active{% endif %}">New Post</a>
+                    </li>
+                    {#IF USER IS LOGGED IN#}
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'logout' %}" >Log Out</a>
+                        </li>
+                        {#IF USER IS NOT LOGGED IN#}
+                    {% else %}
+                        <li>
+                            <a href="{% url 'signup' %}" class="{% if request.path == signup %}active{% endif %}">Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">Log In</a>
+                        </li>
+                    {% endif %}
+                    {#SEARCH BAR#}
+                    <li>
+                        <div id="search_bar" class="input-group mb-5">
+                            <form action="{% url 'search_results' %}" method="get">
+                                <label>
+                                    <input name="q" placeholder="Search For Medicine" type="text" class="form-control">
+                                </label>
+                                <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </form>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- /.container -->
+</header>

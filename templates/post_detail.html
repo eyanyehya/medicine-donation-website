@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <title>Post Detail</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="post-entry">
+        <h2>{{ post.text }}</h2>
+        <p>{{ post.body }}</p>
+    </div>
+
+    <p><a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a></p>
+    <p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>
+
+    <div id='map' style='width: 50%; height: 50%;'></div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZXlhbnllaHlhIiwiYSI6ImNrcm5uem9kOTB5cW0yc252M3AxN2drNzMifQ.IIwBFoL3ox2l3rOwsvZe_w';
+
+        var map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            center: [35.495480, 33.888630], // starting position [lng, lat]
+            zoom: 7.4 // starting zoom
+        });
+
+        var marker = new mapboxgl.Marker()
+            .setLngLat([{{ post.long }}, {{ post.lat }}])
+            .setPopup(new mapboxgl.Popup().setHTML("<h1>{{ post.medicine }}</h1>"))
+            .addTo(map);
+    </script>
+
+{% endblock content %}
+
+</body>
+</html>

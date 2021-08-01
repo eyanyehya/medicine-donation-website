@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+{% extends 'base.html' %}
+{% load static %}
+
+{#    {% block content %}#}
+{#        <h2>Sign up</h2>#}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#        {{ form.first_name }}#}
+{#        {{ form.password1 }}#}
+{#        {{ form.password2 }}#}
+{#    <button type="submit">Sign up</button>#}
+{#    </form>#}
+{#    {% endblock content %}#}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form">
+            <div class="title">Welcome</div>
+            <div class="subtitle">Let's create your account!</div>
+            <ul>
+                <li class="first_name">
+                    <div class="input-container ic1">
+                        <input id="first-name-input" name="{{ form.first_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.first_name.value|default_if_none:"" }}"/>
+                        <div class="cut"></div>
+                        <label for="{{ form.first_name.id_for_label }}" class="placeholder">First Name</label>
+                    </div>
+                </li>
+                <li class="last_name">
+                    <div class="input-container ic1">
+                        <input id="last-name-input" name="{{ form.last_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.last_name.value|default_if_none:"" }}"/>
+                        <div id="last-name-pop-up" class="cut"></div>
+                        <label id="last-name-placeholder" for="{{ form.last_name.id_for_label }}" class="placeholder">Last Name</label>
+                    </div>
+                </li>
+            </ul>
+            <div class="input-container ic2">
+                <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" class="input" type="text" placeholder=" " value="{{ form.username.value|default_if_none:"" }}"/>
+                <div class="cut"></div>
+                <label for="{{ form.username.id_for_label }}" class="placeholder">Username</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" class="input" type="email" placeholder=" " value="{{ form.email.value|default_if_none:"" }}"/>
+                <div class="cut cut-short"></div>
+                <label for="{{ form.email.id_for_label }}" class="placeholder">Email</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="{{ form.phone_number.id_for_label }}" name="{{ form.phone_number.html_name }}" class="input" type="tel" placeholder=" " value="{{ form.phone_number.value|default_if_none:"" }}" pattern="[0-9]{8}"/>
+                <div id="phone_number-pop-up" class="cut"></div>
+                <label for="{{ form.phone_number.id_for_label }}" class="placeholder">Phone Number</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" class="input" type="password" placeholder=" " value="{{ form.password1.value|default_if_none:"" }}"/>
+                <div class="cut"></div>
+                <label for="{{ form.password1.id_for_label }}" class="placeholder">Password</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" class="input" type="password" placeholder=" " value="{{ form.password2.value|default_if_none:"" }}"/>
+                <div id="confirm-password-pop-up" class="cut"></div>
+                <label for="{{ form.password2.id_for_label }}" class="placeholder">Confirm Password</label>
+            </div>
+            <button type="submit" class="submit">Sign Up</button>
+        </div>
+
+ </form>
+{##}
+{#        <form method="post">#}
+{#        {% csrf_token %}#}
+{#        {{ form.phone_number }}#}
+{##}
+{#    <button type="submit">Sign up</button>#}
+{#    </form>#}
+{% endblock content %}

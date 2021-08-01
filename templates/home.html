@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+    {#            {% for post in all_posts_list %}#}
+    {#                <div class="post-entry">#}
+    {#                    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.medicine }}</a></h2>#}
+    {#                </div>#}
+    {#            {% endfor %}#}
+
+    <h1>Welcome to where is the medicine</h1>
+    <h1>مرحبا بكم في مكان الطب</h1>
+    <p>lorem</p>
+        <a href="{% url 'medicine_list' %}">Find Medicine please work</a>
+
+
+{% endblock content %}
+
+</body>
+</html>
