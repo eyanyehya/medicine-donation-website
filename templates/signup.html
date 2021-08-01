@@ -55,7 +55,7 @@
                 <label for="{{ form.email.id_for_label }}" class="placeholder">Email</label>
             </div>
             <div class="input-container ic2">
-                <input id="{{ form.phone_number.id_for_label }}" name="{{ form.phone_number.html_name }}" class="input" type="tel" placeholder=" " value="{{ form.phone_number.value|default_if_none:"" }}" pattern="[0-9]{8}"/>
+                <input id="{{ form.phone_number.id_for_label }}" name="{{ form.phone_number.html_name }}" class="input" type="number" placeholder=" " value="{{ form.phone_number.value|default_if_none:"" }}" pattern="[0-9]{8}"/>
                 <div id="phone_number-pop-up" class="cut"></div>
                 <label for="{{ form.phone_number.id_for_label }}" class="placeholder">Phone Number</label>
             </div>

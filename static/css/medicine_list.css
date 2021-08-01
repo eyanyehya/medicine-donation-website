@@ -1,0 +1,20 @@
+body {
+    background: #00b09b;
+    background: -webkit-linear-gradient(to right, #00b09b, #96c93d);
+    background: linear-gradient(to right, #00b09b, #96c93d);
+    min-height: 100vh;
+}
+
+.text-gry {
+    color: #aaa;
+}
+
+h5 {
+    color: #0088dd;
+}
+
+ul {
+    height: 100px;
+}
+
+
