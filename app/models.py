@@ -9,10 +9,10 @@ mapbox_access_token = 'pk.eyJ1IjoiZXlhbnllaHlhIiwiYSI6ImNrcm5uem9kOTB5cW0yc252M3
 
 
 # Create your models here.
-class Post(models.Model):
+class HaveMedicinePost(models.Model):
     medicine_name = models.CharField(max_length=200, default='')
-    medicine_quantity = models.IntegerField(default=0)
-    expiry_date = models.DateField(default='2021-07-29')
+    medicine_quantity = models.IntegerField()
+    expiry_date = models.DateField()
     post_date_time = models.DateTimeField(default=datetime.now, blank=True)
 
     # MAPBOX STUFF
@@ -25,10 +25,32 @@ class Post(models.Model):
         g = g.latlng  # [lat, long]
         self.lat = g[0]
         self.long = g[1]
-        return super(Post, self).save(*args, **kwargs)
+        return super(HaveMedicinePost, self).save(*args, **kwargs)
 
     author = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, default='')
 
     def __str__(self):
         return self.medicine_name
 
+
+class NeedMedicinePost(models.Model):
+    medicine_name = models.CharField(max_length=200, default='')
+    medicine_quantity = models.IntegerField()
+    post_date_time = models.DateTimeField(default=datetime.now, blank=True)
+
+    # MAPBOX STUFF
+    address = models.TextField(default='')
+    lat = models.FloatField(blank=True, null=True)
+    long = models.FloatField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        g = geocoder.mapbox(self.address, key=mapbox_access_token)
+        g = g.latlng  # [lat, long]
+        self.lat = g[0]
+        self.long = g[1]
+        return super(NeedMedicinePost, self).save(*args, **kwargs)
+
+    author = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, default='')
+
+    def __str__(self):
+        return self.medicine_name

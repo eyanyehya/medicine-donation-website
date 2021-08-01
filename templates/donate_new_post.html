@@ -36,36 +36,38 @@
 
     </form>
 
-{#    {% for address in addresses %}#}
-{#    <h1>Address is {{ address.address }}</h1>#}
-{#    {% endfor %}#}
-{#    <h1>After for </h1>#}
+    {#    {% for address in addresses %}#}
+    {#    <h1>Address is {{ address.address }}</h1>#}
+    {#    {% endfor %}#}
+    {#    <h1>After for </h1>#}
 
-         <div id='map' style='width: 50%; height: 70%;'></div>
+{#    FOR SEARCHBAR ON MAP THAT GIVES AUTO COMPLETE#}
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoiZXlhbnllaHlhIiwiYSI6ImNrcm5uem9kOTB5cW0yc252M3AxN2drNzMifQ.IIwBFoL3ox2l3rOwsvZe_w';
+    <div id='map' style='width: 50%; height: 70%;'></div>
 
-            var map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [35.495480, 33.888630], // starting position [lng, lat]
-                zoom: 7.4 // starting zoom
-            });
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZXlhbnllaHlhIiwiYSI6ImNrcm5uem9kOTB5cW0yc252M3AxN2drNzMifQ.IIwBFoL3ox2l3rOwsvZe_w';
 
+        var map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            center: [35.495480, 33.888630], // starting position [lng, lat]
+            zoom: 7.4 // starting zoom
+        });
 
+        // Add the control to the map.
+        map.addControl(
+            new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+            })
+        );
 
-
-
-
-            {% for address in addresses %}
-                var marker = new mapboxgl.Marker()
-                    .setLngLat([{{ address.long }}, {{ address.lat }}])
-                    .setPopup(new mapboxgl.Popup().setHTML("<h1>{{ address.username }}</h1>"))
-                    .addTo(map);
-            {% endfor %}
-
-        </script>
+    </script>
 
 
 
