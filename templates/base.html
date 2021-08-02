@@ -4,18 +4,29 @@
 
 <head>
 
-    <!--  Meta  -->
+{#    <!--  Meta  -->#}
     <meta charset="UTF-8" />
     <title>{% block title %}Home{% endblock %}</title>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+{#    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>#}
+{#    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />#}
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="{% static 'css/map.css' %}" />
+    <script src="{% static 'javascript/map.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+
 
 
 
     <!--  Styles  -->
 
     {#    CSS LINK FOR THE HOME #}
-    <link href="{% static 'css/form.css' %}" rel="stylesheet">
+
+
+
+
 
     {#    CSS LINK FOR THE HOME #}
     <link href="{% static 'css/home.css' %}" rel="stylesheet">
@@ -50,11 +61,11 @@
 <!-- Bootstrap core JavaScript
   ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<!-- Scripts -->
-<script src="scripts/index.js"></script>
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>#}
+{#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>#}
+{#<!-- Scripts -->#}
+{#<script src="scripts/index.js"></script>#}
 
 
 {#    <header>#}
@@ -79,6 +90,7 @@
 
 {% block content %}
 {% endblock content %}
+
 
 </body>
 

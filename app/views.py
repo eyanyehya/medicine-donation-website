@@ -18,9 +18,6 @@ class AboutPageView(TemplateView):
     template_name = 'about.html'
 
 
-class FormPageView(TemplateView):
-    template_name = 'form.html'
-
 
 class NavBarView(TemplateView):
     template_name = 'navbar.html'
@@ -90,9 +87,9 @@ class BlogDeleteView(DeleteView):
 
 class DonatePostView(CreateView):
     model = HaveMedicinePost
-    fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', ]
+    fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image',]
     template_name = 'donate_new_post.html'
-    success_url = reverse_lazy('post_new')
+    success_url = reverse_lazy('donate_post_new')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

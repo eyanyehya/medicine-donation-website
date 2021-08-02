@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import HomePageView, AboutPageView, BlogDetailView, BlogCreateView, BlogUpdateView, FormPageView, \
+from .views import HomePageView, AboutPageView, BlogDetailView, BlogCreateView, BlogUpdateView, \
     BlogDeleteView, NavBarView, HaveMedicineListPageView, HaveMedicineSearchView, NeedMedicineSearchView, DonatePostView, ReceiveDonationPostView, NeedMedicineListPageView
 
 urlpatterns = [
@@ -21,5 +21,4 @@ urlpatterns = [
     path('donate-search/', HaveMedicineSearchView.as_view(), name='donate_search'),
     path('need-search/', NeedMedicineSearchView.as_view(), name='get_donation_search'),
     path('navbar/', NavBarView.as_view(), name='nav'),
-    path('form/', FormPageView.as_view(), name='form'),
 ]

@@ -14,6 +14,8 @@ class HaveMedicinePost(models.Model):
     medicine_quantity = models.IntegerField()
     expiry_date = models.DateField()
     post_date_time = models.DateTimeField(default=datetime.now, blank=True)
+    medicine_image = models.ImageField(upload_to='.static/images', blank=True, null=True)
+
 
     # MAPBOX STUFF
     address = models.TextField(default='')

@@ -3,79 +3,62 @@
 <body>
 {% block content %}
 
-    <form method="post">
-        {% csrf_token %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-        <div class="form">
-            <div class="title">Welcome</div>
-            <div class="subtitle">Let's create your account!</div>
-            <div class="input-container ic1">
-                <input id="{{ form.medicine_name.id_for_label }}" name="{{ form.medicine_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.medicine_name.value|default_if_none:"" }}"/>
-                <div id="medicine_name-pop-up" class="cut"></div>
-                <label for="{{ form.medicine_name.id_for_label }}" class="placeholder">Medicine Name</label>
+            <div class="form">
+                <div class="title">Welcome</div>
+                <div class="subtitle">Let's create your account!</div>
+                <div class="input-container ic1">
+                    <input id="{{ form.medicine_name.id_for_label }}" name="{{ form.medicine_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.medicine_name.value|default_if_none:"" }}"/>
+                    <div id="medicine_name-pop-up" class="cut"></div>
+                    <label for="{{ form.medicine_name.id_for_label }}" class="placeholder">Medicine Name</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="{{ form.medicine_quantity.id_for_label }}" name="{{ form.medicine_quantity.html_name }}" class="input" type="number" placeholder=" " value="{{ form.medicine_quantity.value|default_if_none:"" }}"/>
+                    <div id="medicine_quantity-pop-up" class="cut"></div>
+                    <label for="{{ form.medicine_quantity.id_for_label }}" class="placeholder">Quantity</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="{{ form.expiry_date.id_for_label }}" name="{{ form.expiry_date.html_name }}" class="input" type="date" placeholder=" " value="{{ form.expiry_date.value|default_if_none:"" }}"/>
+                    <div id="expiry_date-pop-up" class="cut"></div>
+                    <label for="{{ form.expiry_date.id_for_label }}" class="placeholder">Expiry Date</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="address" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
+                    <div id="address-pop-up" class="cut cut-short"></div>
+                    <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
+                </div>
+                <button type="submit" value="submit address" class="submit">Post</button>
             </div>
-            <div class="input-container ic2">
-                <input id="{{ form.medicine_quantity.id_for_label }}" name="{{ form.medicine_quantity.html_name }}" class="input" type="number" placeholder=" " value="{{ form.medicine_quantity.value|default_if_none:"" }}"/>
-                <div id="medicine_quantity-pop-up" class="cut"></div>
-                <label for="{{ form.medicine_quantity.id_for_label }}" class="placeholder">Quantity</label>
-            </div>
-            <div class="input-container ic2">
-                <input id="{{ form.expiry_date.id_for_label }}" name="{{ form.expiry_date.html_name }}" class="input" type="date" placeholder=" " value="{{ form.expiry_date.value|default_if_none:"" }}"/>
-                <div id="expiry_date-pop-up" class="cut"></div>
-                <label for="{{ form.expiry_date.id_for_label }}" class="placeholder">Expiry Date</label>
-            </div>
-            <div class="input-container ic2">
-                <input id="{{ form.address.id_for_label }}" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
-                <div id="address-pop-up" class="cut cut-short"></div>
-                <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
-            </div>
-            <button type="submit" value="submit address" class="submit">Post</button>
-        </div>
+        </form>
 
-
-
-    </form>
-
-    {#    {% for address in addresses %}#}
-    {#    <h1>Address is {{ address.address }}</h1>#}
-    {#    {% endfor %}#}
-    {#    <h1>After for </h1>#}
-
-{#    FOR SEARCHBAR ON MAP THAT GIVES AUTO COMPLETE#}
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
-
-    <div id='map' style='width: 50%; height: 70%;'></div>
 
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZXlhbnllaHlhIiwiYSI6ImNrcm5uem9kOTB5cW0yc252M3AxN2drNzMifQ.IIwBFoL3ox2l3rOwsvZe_w';
+        let address;
+        function initAutocomplete() {
+            address = new google.maps.places.Autocomplete(
+                document.getElementById('address'),
+                {
+                    componentRestrictions: {'country': ['LB']},
+                    fields: ['name']
+                }
+            );
+        }
+    </script>
 
-        var map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v11', // style URL
-            center: [35.495480, 33.888630], // starting position [lng, lat]
-            zoom: 7.4 // starting zoom
-        });
 
-        // Add the control to the map.
-        map.addControl(
-            new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
-            })
-        );
+{#    <div id="map"></div>#}
 
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk&libraries=places&callback=initAutocomplete"
+            async
+            defer>
     </script>
 
 
 
-    {#    {% for address in addresses %}#}
-    {#        <h1>{{ address.lat }}</h1>#}
-    {#        <h1>{{ address.long }}</h1>#}
-    {#    {% endfor %}#}
+
 
 {% endblock content %}
 </body>
-</html>
