@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Post Detail{% endblock %}
+<body>
+{% block content %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form">
+            <div class="title">Welcome</div>
+            <div class="subtitle">Let's create your account!</div>
+            <div class="input-container ic1">
+                <input id="{{ form.medicine_name.id_for_label }}" name="{{ form.medicine_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.medicine_name.value|default_if_none:"" }}"/>
+                <div id="medicine_name-pop-up" class="cut"></div>
+                <label for="{{ form.medicine_name.id_for_label }}" class="placeholder">Medicine Name</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="{{ form.medicine_quantity.id_for_label }}" name="{{ form.medicine_quantity.html_name }}" class="input" type="number" placeholder=" " value="{{ form.medicine_quantity.value|default_if_none:"" }}"/>
+                <div id="medicine_quantity-pop-up" class="cut"></div>
+                <label for="{{ form.medicine_quantity.id_for_label }}" class="placeholder">Quantity</label>
+            </div>
+            <div class="input-container ic2">
+                {{ form.post_type }}
+            </div>
+            {% ifequal form.post_type 'Receive' %}
+                <div class="input-container ic2">
+                    <input id="address" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
+                    <div id="address-pop-up" class="cut cut-short"></div>
+                    <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
+                </div>
+            {% else %}
+                <div class="input-container ic2">
+                    <input id="{{ form.expiry_date.id_for_label }}" name="{{ form.expiry_date.html_name }}" class="input" type="date" placeholder=" " value="{{ form.expiry_date.value|default_if_none:"" }}"/>
+                    <div id="expiry_date-pop-up" class="cut"></div>
+                    <label for="{{ form.expiry_date.id_for_label }}" class="placeholder">Expiry Date</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="address" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
+                    <div id="address-pop-up" class="cut cut-short"></div>
+                    <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
+                </div>
+            {% endifequal %}
+
+            <button type="submit" value="submit address" class="submit">Post</button>
+        </div>
+    </form>
+
+
+
+
+    <script>
+        let address;
+        function initAutocomplete() {
+            address = new google.maps.places.Autocomplete(
+                document.getElementById('address'),
+                {
+                    componentRestrictions: {'country': ['LB']},
+                    fields: ['name']
+                }
+            );
+        }
+    </script>
+
+
+    {#    <div id="map"></div>#}
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk&libraries=places&callback=initAutocomplete"
+            async
+            defer>
+    </script>
+
+
+
+
+
+{% endblock content %}
+</body>
