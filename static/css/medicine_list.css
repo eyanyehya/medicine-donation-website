@@ -17,4 +17,12 @@ ul {
     height: 100px;
 }
 
+#post-type-donate {
+    color: red;
+}
+
+#post-type-receive {
+    color: green;
+}
+
 

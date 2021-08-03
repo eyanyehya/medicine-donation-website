@@ -1,7 +1,6 @@
 {% url 'about' as about %}
 {% url 'home' as home %}
-{% url 'donate_post_new' as new_donation %}
-{% url 'receive_donation_post_new' as receive_donation %}
+{% url 'post_new' as post_new %}
 {% url 'signup' as signup %}
 {% url 'login' as login %}
 {% load static %}
@@ -28,10 +27,7 @@
                         <a href="{% url 'about' %}" class="{% if request.path == about %}active{% endif %}">about us</a>
                     </li>
                     <li>
-                        <a href="{% url 'donate_post_new' %}" class="{% if request.path == new_donation %}active{% endif %}">Donate Medicine</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'receive_donation_post_new' %}" class="{% if request.path == receive_donation %}active{% endif %}">Get Medicine</a>
+                        <a href="{% url 'post_new' %}" class="{% if request.path == post_new %}active{% endif %}">Donate/Request Medicine</a>
                     </li>
                     {#IF USER IS LOGGED IN#}
                     {% if user.is_authenticated %}
@@ -50,19 +46,9 @@
                     {#SEARCH BAR#}
                     <li>
                         <div id="search_bar" class="input-group mb-5">
-                            <form action="{% url 'donate_search' %}" method="get">
+                            <form action="{% url 'medicine_search' %}" method="get">
                                 <label>
                                     <input name="q" placeholder="Search For Medicine" type="text" class="form-control">
-                                </label>
-                                <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                    </li>
-                    <li>
-                        <div id="search_bar" class="input-group mb-5">
-                            <form action="{% url 'get_donation_search' %}" method="get">
-                                <label>
-                                    <input name="q" placeholder="Search for people who need Medicine" type="text" class="form-control">
                                 </label>
                                 <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                             </form>

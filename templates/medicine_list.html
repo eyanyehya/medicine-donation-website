@@ -30,6 +30,13 @@
                                     <h5 class="mt-0 font-weight-bold mb-2">{{ post.medicine_name }}</h5>
                                     <p class="font-italic text-muted mb-0 small">{{ post.address }}</p>
                                     <h6 class="font-weight-bold my-2">Amount: {{ post.medicine_quantity }}</h6>
+                                    {% ifequal post.post_type 'Donate' %}
+                                        <h6 id="post-type-donate">Type: {{ post.post_type }}</h6>
+                                    {% endifequal %}
+                                    {% ifequal post.post_type 'Receive' %}
+                                        <h6 id="post-type-receive">Type: {{ post.post_type }}</h6>
+                                    {% endifequal %}
+
                                     <div class="d-flex align-items-center justify-content-between mt-1">
                                         <h6 class="font-weight-bold my-2">Expires on {{ post.expiry_date }}</h6>
                                     </div>
