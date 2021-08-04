@@ -22,11 +22,12 @@ class MedicinePost(models.Model):
         ('Donate', 'Donate'),
         ('Receive', 'Receive')
     )
-    post_type = models.CharField(max_length=9, choices=POST_CHOICES)
+    post_type = models.CharField(max_length=9, choices=POST_CHOICES, default="JANUARY")
 
     widgets = {
         'post_type': forms.Select(attrs={'class': 'bootstrap-select'}),
     }
+
 
     # MAPBOX STUFF
     address = models.TextField(default='')
@@ -44,3 +45,6 @@ class MedicinePost(models.Model):
 
     def __str__(self):
         return self.medicine_name
+
+
+
