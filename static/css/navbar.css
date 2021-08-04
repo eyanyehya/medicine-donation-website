@@ -5,6 +5,7 @@
 
 body {
   background: #1B2E3C !important;
+  margin: 0;
 }
 /* main-header start */
 [data-target="#mainMenu"] {
@@ -92,9 +93,7 @@ body {
 .main-header {
   position: fixed;
   top: 25px;
-  left: 0;
-  z-index: 99;
-  width: 100%;
+  width: 100vw;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
