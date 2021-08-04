@@ -22,7 +22,7 @@ class MedicinePost(models.Model):
         ('Donate', 'Donate'),
         ('Receive', 'Receive')
     )
-    post_type = models.CharField(max_length=9, choices=POST_CHOICES, default="JANUARY")
+    post_type = models.CharField(max_length=20, choices=POST_CHOICES, default="JANUARY")
 
     widgets = {
         'post_type': forms.Select(attrs={'class': 'bootstrap-select'}),

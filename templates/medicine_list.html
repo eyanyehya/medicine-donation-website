@@ -25,12 +25,12 @@
                     <li class="list-group-item">
                         <div class="type-of-post-donate">
                             {% ifequal post.post_type 'Donate' %}
-                                <h6 id="post-type-donate">{{ post.post_type }}</h6>
+                                <h6 id="post-type-donate">Donation</h6>
                             {% endifequal %}
                         </div>
                         <div class="type-of-post-receive">
                             {% ifequal post.post_type 'Receive' %}
-                                <h6 id="post-type-receive">{{ post.post_type }}</h6>
+                                <h6 id="post-type-receive">In Need Of</h6>
                             {% endifequal %}
                         </div>
                         <!-- Custom content-->
