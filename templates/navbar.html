@@ -3,6 +3,7 @@
 {% url 'post_new' as post_new %}
 {% url 'signup' as signup %}
 {% url 'login' as login %}
+{% url 'terms' as terms %}
 {% load static %}
 
 
@@ -45,6 +46,9 @@
                             <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">Log In</a>
                         </li>
                     {% endif %}
+                        <li>
+                            <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>
+                        </li>
                     {#SEARCH BAR#}
                     <li>
                         <div id="search_bar" class="input-group mb-5">

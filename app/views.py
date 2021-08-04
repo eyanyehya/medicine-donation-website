@@ -19,6 +19,9 @@ class HomePageView(ListView):
 class AboutPageView(TemplateView):
     template_name = 'about.html'
 
+class TermsView(TemplateView):
+    template_name = 'terms.html'
+
 
 class NavBarView(TemplateView):
     template_name = 'navbar.html'

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import HomePageView, AboutPageView, BlogDetailView, BlogCreateView, BlogUpdateView, BlogDeleteView, NavBarView, MedicineListPageView, MedicineSearchView, PostView
+from .views import HomePageView, AboutPageView, BlogDetailView, BlogCreateView, BlogUpdateView, BlogDeleteView, NavBarView, MedicineListPageView, MedicineSearchView, PostView, TermsView
 
 urlpatterns = [
     # home page url pattern
@@ -17,4 +17,5 @@ urlpatterns = [
     path('medicine_list/', MedicineListPageView.as_view(), name='medicine_list'),
     path('search/', MedicineSearchView.as_view(), name='medicine_search'),
     path('navbar/', NavBarView.as_view(), name='nav'),
+    path('terms/', TermsView.as_view(), name='terms'),
 ]
