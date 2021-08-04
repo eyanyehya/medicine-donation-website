@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
 {% extends 'base.html' %}
-
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block styles %}
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@800;900&display=swap" rel="stylesheet">
+ {% endblock %}
 {% block content %}
     {#            {% for post in all_posts_list %}#}
     {#                <div class="post-entry">#}
@@ -21,6 +21,3 @@
 
 
 {% endblock content %}
-
-</body>
-</html>

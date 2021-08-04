@@ -15,25 +15,16 @@
     <link rel="stylesheet" href="{% static 'css/map.css' %}" />
     <script src="{% static 'javascript/map.js' %}"></script>
 
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
 
     <!--  Styles  -->
     {#    CSS LINK FOR THE HOME #}
     {#FONTS#}
-    <link href="{% static 'css/home.css' %}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@800;900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% comment %}
     <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap" rel="stylesheet">{% endcomment %}
     {#    CSS LINK FOR LIST OF POSTS#}
-    <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
+
 
     {#    CSS LINK FOR SEARCH BAR#}
     <link href="{% static 'css/search_bar.css' %}" rel="stylesheet">
@@ -41,8 +32,6 @@
 
     {#    CSS LINK AND BOOTSTRAP FOR THE NAVBAR#}
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
     {% block styles  %}
     {% endblock %}
     {# CSS LINK FOR THE TERMS OF SERVICE #}
