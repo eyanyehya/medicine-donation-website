@@ -10,12 +10,17 @@
 <body>
 {% extends 'base.html' %}
 
+
 {% block content %}
     <div class="post-entry">
         <h2>{{ post.medicine_name }}</h2>
         <p id="lat">{{ post.lat }}</p>
         <p id="long">{{ post.long }}</p>
     </div>
+    
+    <img src="{{ post.medicine_image.url }}">
+    
+
 
     <p><a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a></p>
     <p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>
