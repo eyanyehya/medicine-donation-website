@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import MedicinePost
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.http import HttpResponseRedirect
+from .forms import MedicineForm
 
 
 # Create your views here.
@@ -68,8 +70,9 @@ class BlogDeleteView(DeleteView):
 # MAPBOX VIEW
 
 class PostView(CreateView):
-    model = MedicinePost
-    fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type']
+    form_class = MedicineForm
+    # model = MedicinePost
+    # fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type']
     template_name = 'new_post.html'
     success_url = reverse_lazy('home')
 
@@ -78,3 +81,16 @@ class PostView(CreateView):
         # context['addresses'] = Post.objects.filter(address__exact=Post.address)
         context['addresses'] = MedicinePost.objects.filter(address=self.model.address)
         return context
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(self.success_url)
+        else:
+            return render(request, self.template_name, {'form': form})
+

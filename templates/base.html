@@ -4,12 +4,12 @@
 
 <head>
 
-{#    <!--  Meta  -->#}
+    {#    <!--  Meta  -->#}
     <meta charset="UTF-8" />
     <title>{% block title %}Home{% endblock %}</title>
 
-{#    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>#}
-{#    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />#}
+    {#    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>#}
+    {#    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />#}
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="{% static 'css/map.css' %}" />
@@ -29,10 +29,15 @@
 
 
     {#    CSS LINK FOR THE HOME #}
+    {#FONTS#}
     <link href="{% static 'css/home.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@800;900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700&display=swap" rel="stylesheet">
 
     {#    CSS LINK FOR LIST OF POSTS#}
     <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
