@@ -24,9 +24,8 @@
                 <div id="phone_number-pop-up" class="cut"></div>
                 <label for="{{ form.phone_number.id_for_label }}" class="placeholder">Phone Number</label>
             </div>
-            <div class="input-container ic2">
-
-                <p class="sentence">I want to </p>{{ form.post_type }}
+            <div class="input-container ic3">
+                I want to {{ form.post_type }} medicine.
             </div>
             {% ifequal form.post_type 'Receive' %}
                 <div class="input-container ic2">
@@ -46,7 +45,9 @@
                     <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
                 </div>
                 <br/>
-                {{ form.medicine_image }}
+                <div class="image">
+                    {{ form.medicine_image }}
+                </div>
             {% endifequal %}
 
             <button type="submit" value="submit address" class="submit">Post</button>
