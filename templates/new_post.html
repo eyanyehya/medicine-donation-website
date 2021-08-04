@@ -25,7 +25,8 @@
                 <label for="{{ form.phone_number.id_for_label }}" class="placeholder">Phone Number</label>
             </div>
             <div class="input-container ic2">
-                {{ form.post_type }}
+
+                <p class="sentence">I want to </p>{{ form.post_type }}
             </div>
             {% ifequal form.post_type 'Receive' %}
                 <div class="input-container ic2">
