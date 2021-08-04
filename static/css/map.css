@@ -7,7 +7,7 @@ p {
        * element that contains the map. */
 #map {
   height: 50%;
-    width: 50%;
+    width: 100%;
 }
 
 .pac-container {

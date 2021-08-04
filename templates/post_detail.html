@@ -19,31 +19,46 @@
     {#    </div>#}
     {##}
     {#    <img src="{{ post.medicine_image.url }}">#}
-
-    <div class="d-flex justify-content-center container mt-5">
-        <div class="post-detail-card p-3 bg-white"><i class="fa fa-apple"></i>
-            <div class="about-product text-center mt-2">
-                <img src="{{ post.medicine_image.url }}" width="300">
-                <div>
-                    <h4>{{ post.medicine_name }}</h4>
-                    <h6 class="mt-0 text-black-50">{{ post.address }}</h6>
+    {% ifequal post.post_type 'Donate' %}
+        <div class="d-flex justify-content-center container mt-5">
+            <div class="post-detail-card-donate p-3 bg-white"><i class="fa fa-apple"></i>
+                <div class="about-product text-center mt-2">
+                    <img id="photo-detail" src="{{ post.medicine_image.url }}" width="300">
+                    <div>
+                        <h4>{{ post.medicine_name }}</h4>
+                        <h6 class="mt-0 text-black-50">{{ post.address }}</h6>
+                    </div>
                 </div>
-            </div>
-            <div class="stats mt-2">
-                {% ifequal post.post_type 'Donate' %}
+                <div class="stats mt-2">
                     <div class="d-flex justify-content-between p-price"><span>Quantity: </span><span>{{ post.medicine_quantity }}</span></div>
                     <div class="d-flex justify-content-between p-price"><span>Expiry Date</span><span>{{ post.expiry_date }}</span></div>
                     <div class="d-flex justify-content-between p-price"><span>Phone Number: </span><span>{{ post.phone_number }}</span></div>
-                {% endifequal %}
-                {% ifequal post.post_type 'Receive' %}
+                </div>
+                <div id="map"></div>
+            </div>
+        </div>
+    {% endifequal %}
+
+    {% ifequal post.post_type 'Receive' %}
+        <div class="d-flex justify-content-center container mt-5">
+            <div class="post-detail-card-receive p-3 bg-white"><i class="fa fa-apple"></i>
+                <div class="about-product text-center mt-2">
+                    <img id="photo-detail" src="{{ post.medicine_image.url }}" width="300">
+                    <div>
+                        <h4>{{ post.medicine_name }}</h4>
+                        <h6 class="mt-0 text-black-50">{{ post.address }}</h6>
+                    </div>
+                </div>
+                <div class="stats mt-2">
                     <div class="d-flex justify-content-between p-price"><span>Quantity: </span><span>{{ post.medicine_quantity }}</span></div>
                     <div class="d-flex justify-content-between p-price"><span>Phone Number: </span><span>{{ post.phone_number }}</span></div>
-                {% endifequal %}
+                </div>
+                <div id="map"></div>
             </div>
-                    <div id="map"></div>
-
         </div>
-    </div>
+    {% endifequal %}
+
+
 
 
 
