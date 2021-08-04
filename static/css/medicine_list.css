@@ -18,11 +18,36 @@ ul {
 }
 
 #post-type-donate {
-    color: red;
+    color: black;
+    font-family: 'Exo 2', sans-serif;
+    margin-left: 45%;
 }
 
 #post-type-receive {
-    color: green;
+    color: black;
+    font-family: 'Exo 2', sans-serif;
+    margin-left: 45%;
 }
+
+.type-of-post-donate {
+    background-color: #52b788;
+    border-bottom-left-radius:50%;
+    border-bottom-right-radius:50%;
+}
+
+.type-of-post-receive {
+    background-color: #f94144;
+    border-bottom-left-radius:50%;
+    border-bottom-right-radius:50%;
+}
+
+.post-detail-card {
+    width: 600px;
+    height: 600px;
+}
+
+
+
+
 
 

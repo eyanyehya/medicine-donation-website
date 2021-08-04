@@ -19,6 +19,11 @@
                 <div id="medicine_quantity-pop-up" class="cut"></div>
                 <label for="{{ form.medicine_quantity.id_for_label }}" class="placeholder">Quantity</label>
             </div>
+            <div class="input-container ic1">
+                <input id="{{ form.phone_number.id_for_label }}" name="{{ form.phone_number.html_name }}" class="input" type="text" placeholder=" " value="{{ form.phone_number.value|default_if_none:"" }}"/>
+                <div id="phone_number-pop-up" class="cut"></div>
+                <label for="{{ form.phone_number.id_for_label }}" class="placeholder">Phone Number</label>
+            </div>
             <div class="input-container ic2">
                 {{ form.post_type }}
             </div>

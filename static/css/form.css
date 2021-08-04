@@ -72,6 +72,7 @@ body {
   margin-top: 10px;
 }
 
+
 #first-name-input {
   width: 250px;
 }
@@ -111,6 +112,10 @@ body {
 
 #address-pop-up {
   width: 65px;
+}
+
+#phone_number-pop-up {
+  width: 105px;
 }
 
 .unordered-list {

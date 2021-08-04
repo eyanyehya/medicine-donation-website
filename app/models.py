@@ -16,6 +16,8 @@ class MedicinePost(models.Model):
     expiry_date = models.DateField()
     post_date_time = models.DateTimeField(default=datetime.now, blank=True)
     medicine_image = models.ImageField(upload_to='images/', default='/images/PNG_transparency_demonstration_1.png')
+    phone_number = models.CharField(max_length=200, default='')
+
     POST_CHOICES = (
         ('Donate', 'Donate'),
         ('Receive', 'Receive')
