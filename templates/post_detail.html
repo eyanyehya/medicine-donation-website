@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-
-    <title>Post Detail</title>
-</head>
-
-
-<body>
 {% extends 'base.html' %}
-
+{% load static %}
+{% block title %}Post Detail{% endblock %}
+{% block styles %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="{% static 'css/map.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/medicine_list.css' %}" />
+{% endblock %}
 
 {% block content %}
     {#    <div class="post-entry">#}
