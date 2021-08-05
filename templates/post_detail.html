@@ -26,9 +26,9 @@
                     </div>
                 </div>
                 <div class="stats mt-2">
-                    <div id="post-detail-medicine-quantity" class="d-flex justify-content-between p-price"><span>Quantity: </span><span>{{ post.medicine_quantity }}</span></div>
-                    <div class="d-flex justify-content-between p-price"><span>Expiry Date</span><span>{{ post.expiry_date }}</span></div>
-                    <div class="d-flex justify-content-between p-price"><span>Phone Number: </span><span>{{ post.phone_number }}</span></div>
+                    <div id="post-detail-medicine" class="d-flex justify-content-between p-price"><span>Quantity: </span><span>{{ post.medicine_quantity }}</span></div>
+                    <div id="post-detail-medicine" class="d-flex justify-content-between p-price"><span>Expiry Date</span><span>{{ post.expiry_date }}</span></div>
+                    <div id="post-detail-medicine" class="d-flex justify-content-between p-price"><span>Phone Number: </span><span>{{ post.phone_number }}</span></div>
                 </div>
                 <div id="map"></div>
             </div>
@@ -41,8 +41,8 @@
                 <div class="about-product text-center mt-2">
                     <img id="photo-detail" src="{{ post.medicine_image.url }}" width="300">
                     <div>
-                        <h4>{{ post.medicine_name }}</h4>
-                        <h6 class="mt-0 text-black-50">{{ post.address }}</h6>
+                        <h4 id="post-detail-medicine">{{ post.medicine_name }}</h4>
+                        <h6 id="post-detail-medicine" class="mt-0 text-black-50">{{ post.address }}</h6>
                     </div>
                 </div>
                 <div class="stats mt-2">
@@ -58,8 +58,8 @@
 
 
 
-    {#    <p><a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a></p>#}
-    {#    <p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>#}
+        <p><a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a></p>
+        <p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>
 
 
     <script>

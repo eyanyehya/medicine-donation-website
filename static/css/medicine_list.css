@@ -57,9 +57,23 @@ ul {
     max-width: 200px;
 }
 
-#post-detail-medicine-quantity {
-    font-size: 30px;
+#post-detail-medicine {
+    font-family: sans-serif;
+    font-size: 25px;
+    font-weight: 600;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
