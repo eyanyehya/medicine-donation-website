@@ -41,7 +41,9 @@ class MedicinePost(models.Model):
         self.long = g[1]
         return super(MedicinePost, self).save(*args, **kwargs)
 
-    author = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, default='')
+    # author = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, default='')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.medicine_name
