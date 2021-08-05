@@ -1,40 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block styles %}
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
     <link href="../../static/css/login.css" rel="stylesheet">
-    {% extends 'base.html' %}
-    {% load static %}
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
-    {% block content %}
-    <form method="post">
-        {% csrf_token %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
 
-        <div class="form">
-            <div class="title">Log In</div>
-            <div class="subtitle">Let's create your account!</div>
-            <div class="input-container ic1">
-                <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" class="input" type="text" placeholder=" " value="{{ form.username.value|default_if_none:"" }}"/>
-                <div class="cut"></div>
-                <label for="{{ form.username.id_for_label }}" class="placeholder">Name</label>
-            </div>
-            <div class="input-container ic2">
-                <input id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" class="input" type="password" placeholder=" " value="{{ form.password.value|default_if_none:"" }}"/>
-                <div class="cut"></div>
-                <label for="{{ form.password.id_for_label }}" class="placeholder">Password</label>
-            </div>
-            <button type="submit" class="submit">Log In</button>
+    <div class="form">
+        <div class="title">Log In</div>
+        <div class="subtitle">Let's create your account!</div>
+        <div class="input-container ic1">
+            <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" class="input" type="text" placeholder=" " value="{{ form.username.value|default_if_none:"" }}"/>
+            <div class="cut"></div>
+            <label for="{{ form.username.id_for_label }}" class="placeholder">Name</label>
         </div>
+        <div class="input-container ic2">
+            <input id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" class="input" type="password" placeholder=" " value="{{ form.password.value|default_if_none:"" }}"/>
+            <div class="cut"></div>
+            <label for="{{ form.password.id_for_label }}" class="placeholder">Password</label>
+        </div>
+        <button type="submit" class="submit">Log In</button>
+    </div>
 
-    </form>
-    {% endblock content %}
-
-
-
-
-</body>
-</html>
+</form>
+{% endblock content %}

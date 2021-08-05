@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Signup{% endblock %}
+{% block styles %}
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
 {#    {% block content %}#}
 {#        <h2>Sign up</h2>#}
