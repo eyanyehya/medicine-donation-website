@@ -52,19 +52,21 @@ class MedicineSearchView(ListView):
         return object_list
 
 
-class BlogCreateView(CreateView):
+class PostCreateView(CreateView):
     model = MedicinePost
     template_name = 'new_post.html'
     fields = '__all__'
 
 
-class BlogUpdateView(UpdateView):
+class PostUpdateView(UpdateView):
     model = MedicinePost
     template_name = 'post_edit.html'
-    fields = ['title', 'body']
+    fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
+                  'phone_number']
+    success_url = reverse_lazy('medicine_list')
 
 
-class BlogDeleteView(DeleteView):
+class PostDeleteView(DeleteView):
     model = MedicinePost
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_new')
