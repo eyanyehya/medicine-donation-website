@@ -28,7 +28,6 @@ class MedicinePost(models.Model):
         'post_type': forms.Select(attrs={'class': 'bootstrap-select'}),
     }
 
-
     # MAPBOX STUFF
     address = models.TextField(default='')
     lat = models.FloatField(blank=True, null=True)
@@ -45,6 +44,3 @@ class MedicinePost(models.Model):
 
     def __str__(self):
         return self.medicine_name
-
-
-
