@@ -60,10 +60,15 @@
 {#        </div>#}
 {#    </form>#}
 
-            <form action="" method="post">{% csrf_token %}
+    <form action="" method="post">
+        <div class="form">
+            <div class="title">Welcome</div>
+            <div class="subtitle">Let's create your account!</div>
+            {% csrf_token %}
             {{ form.as_p }}
-        <input type="submit" value="Update">
-        </form>
+            <input type="submit" value="Update">
+        </div>
+    </form>
 
 
 

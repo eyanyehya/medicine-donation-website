@@ -96,6 +96,7 @@ body {
   width: 100vw;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  z-index: 9999;
 }
 
 .main-header.fixed-nav {
