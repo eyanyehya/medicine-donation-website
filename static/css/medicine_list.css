@@ -63,6 +63,54 @@ ul {
     font-weight: 600;
 }
 
+/*POST DETAIL STUFF*/
+
+/*POST EDIT BUTTON STUFF*/
+
+#post-edit-button {
+  background-color: cadetblue;
+  box-shadow: 0 5px 0 darkblue;
+  color: white;
+  padding: 1em 3em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#post-edit-button:hover {
+  background-color: darkcyan;
+}
+
+#post-edit-button:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+/*POST DELETE BUTTON STUFF*/
+
+
+#post-delete-button {
+  margin-left: 300px;
+  background-color: red;
+  box-shadow: 0 5px 0 darkred;
+  color: white;
+  padding: 1em 4em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#post-delete-button:hover {
+  background-color: #ce0606;
+}
+
+#post-delete-button:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+
+
 
 
 

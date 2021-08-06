@@ -31,6 +31,12 @@
                     <div id="post-detail-medicine" class="d-flex justify-content-between p-price"><span>Phone Number: </span><span>{{ post.phone_number }}</span></div>
                 </div>
                 <div id="map"></div>
+                {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                        <p><a id="post-edit-button" href="{% url 'post_edit' post.pk %}">Edit Post</a></p>
+                        <p><a id="post-delete-button" href="{% url 'post_delete' post.pk %}">Delete Post</a></p>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     {% endifequal %}
@@ -50,16 +56,15 @@
                     <div class="d-flex justify-content-between p-price"><span>Phone Number: </span><span>{{ post.phone_number }}</span></div>
                 </div>
                 <div id="map"></div>
+                {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                        <p><a id="post-edit-button" href="{% url 'post_edit' post.pk %}">Edit Post</a></p>
+                        <p><a id="post-delete-button" href="{% url 'post_delete' post.pk %}">Delete Post</a></p>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     {% endifequal %}
-
-    {% if user.is_authenticated %}
-        {% if user.id == post.author.id %}
-            <p><a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a></p>
-            <p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>
-        {% endif %}
-    {% endif %}
 
 
     <script>
