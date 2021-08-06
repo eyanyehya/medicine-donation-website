@@ -1,4 +1,6 @@
-body {
+.term_style {
     color: whitesmoke;
     margin-top: 80px;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
