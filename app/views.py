@@ -6,6 +6,10 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from .forms import MedicineForm
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 
 
 # Create your views here.
@@ -19,18 +23,13 @@ class HomePageView(ListView):
 class AboutPageView(TemplateView):
     template_name = 'about.html'
 
+
 class TermsView(TemplateView):
     template_name = 'terms.html'
 
 
 class NavBarView(TemplateView):
     template_name = 'navbar.html'
-
-
-class BlogDetailView(DetailView):
-    model = MedicinePost
-    template_name = 'post_detail.html'
-    context_object_name = 'post'
 
 
 class MedicineListPageView(ListView):
@@ -52,53 +51,79 @@ class MedicineSearchView(ListView):
         return object_list
 
 
-class PostCreateView(CreateView):
+# POST VIEWS
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    # form_class = MedicineForm
     model = MedicinePost
     template_name = 'new_post.html'
-    fields = '__all__'
+    fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
+              'phone_number', ]
+    login_url = 'login'
+
+    # success_url = reverse_lazy('home')
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     # context['addresses'] = Post.objects.filter(address__exact=Post.address)
+    #     context['addresses'] = MedicinePost.objects.filter(address=self.model.address)
+    #     return context
+
+    # def get(self, request, *args, **kwargs):
+    #     form = self.form_class()
+    #     return render(request, self.template_name, {'form': form})
+
+    # def post(self, request, *args, **kwargs):
+    #     form = self.form_class(request.POST, request.FILES)
+    #     # userform = settings.AUTH_USER_MODEL(request.POST, request.FILES)
+    #     # form = MedicineForm(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         form.instance.user = request.user
+    #         form.save()
+    #         messages.success(request, request.user)
+    #         # form.instance.user = form.save(commit=True)
+    #         # form.save()
+    #         return redirect(self.success_url)
+    #     else:
+    #         return render(request, self.template_name, {'form': form})
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class PostUpdateView(UpdateView):
     model = MedicinePost
     template_name = 'post_edit.html'
     fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
-                  'phone_number']
+              'phone_number']
     success_url = reverse_lazy('medicine_list')
+    login_url = 'login'
+
+    def dispatch(self, request, *args, **kwargs):  # new
+        obj = self.get_object()
+
+        if obj.author != self.request.user:
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
 
 
 class PostDeleteView(DeleteView):
     model = MedicinePost
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_new')
+    login_url = 'login'
+
+    def dispatch(self, request, *args, **kwargs):  # new
+        obj = self.get_object()
+
+        if obj.author != self.request.user:
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
 
 
-# MAPBOX VIEW
-
-class PostView(CreateView):
-    form_class = MedicineForm
-    # model = MedicinePost
-    # fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type']
-    template_name = 'new_post.html'
-    success_url = reverse_lazy('home')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # context['addresses'] = Post.objects.filter(address__exact=Post.address)
-        context['addresses'] = MedicinePost.objects.filter(address=self.model.address)
-        return context
-
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, request.FILES)
-        # form = MedicineForm(request.POST, request.FILES)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            return redirect(self.success_url)
-        else:
-            return render(request, self.template_name, {'form': form})
-
+class PostDetailView(DetailView):
+    model = MedicinePost
+    template_name = 'post_detail.html'
+    context_object_name = 'post'
+    login_url = 'login'

@@ -4,6 +4,7 @@ from django.urls import reverse
 import geocoder
 from django.conf import settings
 from django import forms
+from django.contrib.auth import get_user_model
 
 # token
 google_maps_access_token = 'AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk'
@@ -41,8 +42,11 @@ class MedicinePost(models.Model):
         return super(MedicinePost, self).save(*args, **kwargs)
 
     # author = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, default='')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, )
 
     def __str__(self):
         return self.medicine_name
+
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
+

@@ -6,4 +6,4 @@ class MedicineForm(forms.ModelForm):
     class Meta:
         model = MedicinePost
         fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
-                  'phone_number']
+                  'phone_number', ]
