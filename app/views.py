@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import MedicinePost
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from .forms import MedicineForm
@@ -127,3 +127,16 @@ class PostDetailView(DetailView):
     template_name = 'post_detail.html'
     context_object_name = 'post'
     login_url = 'login'
+
+
+class MyPostsListView(ListView):
+    model = MedicinePost
+    template_name = 'my_posts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['myPosts'] = MedicinePost.objects.filter(author=self.request.user)
+        return context
+
+
+
