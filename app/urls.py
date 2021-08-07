@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import HomePageView, AboutPageView, PostDetailView, PostUpdateView, PostDeleteView, PostCreateView, NavBarView, MedicineListPageView, MedicineSearchView, TermsView
+from .views import HomePageView, AboutPageView, PostDetailView, PostUpdateView, PostDeleteView, PostCreateView, NavBarView, MedicineListPageView, MedicineSearchView, TermsView, MyPostsListView
 
 urlpatterns = [
     # home page url pattern
@@ -11,6 +11,7 @@ urlpatterns = [
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
     path('post/new/', PostCreateView.as_view(), name='post_new'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
+    path('my-posts/', MyPostsListView.as_view(), name='my_posts'),
 
     # other url patterns
     path('about/', AboutPageView.as_view(), name='about'),
