@@ -40,7 +40,7 @@ body {
 #mainMenu li > a {
     font-size: 1em;
     letter-spacing: 1px;
-    color: #fff;
+    color: #e5e5e5;
     font-weight: 400;
     position: relative;
     z-index: 1;
@@ -48,7 +48,7 @@ body {
 }
 
 .fixed-nav #mainMenu li > a {
-    color: #fff;
+    color: #e5e5e5;
     text-decoration: none;
 }
 
@@ -61,7 +61,7 @@ body {
     content: "";
     width: calc(100% - 1px);
     height: 1px;
-    background: #fff;
+    background: #e5e5e5;
     bottom: -6px;
     left: 0;
 
@@ -209,11 +209,11 @@ body {
     }
 
     .navbar-toggler:hover .icon-bar {
-        background-color: #fff;
+        background-color: #e5e5e5;
     }
 
     .navbar-toggler:focus .icon-bar {
-        background-color: #fff;
+        background-color: #e5e5e5;
     }
 
     /*header ends*/
