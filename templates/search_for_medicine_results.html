@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search Results</title>
-</head>
-<body>
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}Search List{% endblock %}
+{% block styles %}
+    <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
+{% endblock %}
+
 
 {% block content %}
     {#    {% for object in object_list %}#}
     {#        <h1>There is {{ object.medicine }} in {{ object.address }}</h1>#}
     {#    {% endfor %}#}
-
 
     <div class="container py-5">
 
@@ -23,23 +21,35 @@
                     <!-- List group-->
                     <ul class="list-group shadow">
 
-
-                        <!-- list group item -->
-                        <li class="list-group-item">
-                            <!-- Custom content-->
-                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                                <div class="media-body order-2 order-lg-1">
-[                                    <h5 id="me" class="mt-0 font-weight-bold mb-2">{{ object.medicine_name }}</h5>
-                                    <p class="font-italic text-muted mb-0 small">{{ object.address }}</p>
-                                    <div class="d-flex align-items-center justify-content-between mt-1">
-                                        <h6 class="font-weight-bold my-2">$140.00</h6>
-                                    </div>
+                    <!-- list group item -->
+                    <li class="list-group-item">
+                        <div class="type-of-post-donate">
+                            {% ifequal object.post_type 'Donate' %}
+                                <h6 id="post-type-donate">Donation</h6>
+                            {% endifequal %}
+                        </div>
+                        <div class="type-of-post-receive">
+                            {% ifequal object.post_type 'Receive' %}
+                                <h6 id="post-type-receive">In Need Of</h6>
+                            {% endifequal %}
+                        </div>
+                        <!-- Custom content-->
+                        <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                            <div class="media-body order-2 order-lg-1">
+                                <a href="{% url 'post_detail' object.pk %}">
+                                    <h5 class="font-for-name">{{ object.medicine_name }}</h5>
+                                </a>
+                                <p class="font-italic text-muted mb-0 small">{{ object.address }}</p>
+                                <h6 class="font-for-name">Quantity: {{ object.medicine_quantity }}</h6>
+                                <div class="d-flex align-items-center justify-content-between mt-1">
+                                    <h6 class="font-for-name">{{ object.post_date_time }}</h6>
                                 </div>
-                                <img src="https://res.cloudinary.com/mhmd/image/upload/v1556485078/shoes-2_g4qame.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                             </div>
-                            <!-- End -->
-                        </li>
-                    <!-- End -->
+                            {#                            <img src="{{ post.medicine_image.url }}">#}
+                            <img src="{{ object.medicine_image.url }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        </div>
+                        <!-- End -->
+                    </li><!-- End -->
 
                 {% endfor %}
 
@@ -49,10 +59,7 @@
         </div>
     </div>
 
+
 {% endblock content %}
 
 
-
-
-</body>
-</html>
