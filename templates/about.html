@@ -1,16 +1,65 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}About Us{% endblock %}
-<head>
-    <meta charset="UTF-8">
-    <title>About Us</title>
+{% block styles %}
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
-</head>
-<body>
+    <link href="{% static 'css/about.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-    <p>About Us</p>
+    <div class="about_stl">
+        <div class="engl">
+
+            <h1>Who We Are?</h1>
+
+            <h2>Medonations, Do good, touch every aspect of our team. We see that our initiative will make a great
+                impact on
+                Lebanon’s future.</h2>
+
+
+            <p>As an independent initiative that is 100% with supporting the Lebanese people. Our goal is not to
+                generate
+                any revenue from this website, we are here to successfully improve the living conditions of Lebanese
+                citizens.
+
+                Just over a year ago the start of Lebanon’s biggest economic and political crisis began, we plan on
+                making
+                Lebanese citizens lives easier.
+
+                Medonations is a web-app for Pharmaceutical-sharing, aiming to reduce medicine waste. It does this by
+                connecting those with unwanted pharmaceuticals to those who need or wish to use such meds. The medicine
+                must
+                be on before expiry date and it must not be tampered with. Patients from all around Lebanon can enter
+                this
+                website and either give away or pick up pharmaceuticals.</p>
+        </div>
+        <br>
+        <div class="arb">
+
+            <h1>من نحن؟</h1>
+
+            <h2>‏Medonations, فعل الخير، يمس كل جوانب فريقنا. نحن نرى أن مبادرتنا ستؤثر بشكل كبير على مستقبل لبنان.</h2>
+
+
+            <p>مبادرة مستقلة بنسبة 100٪ مع دعم الشعب اللبناني. هدفنا ليس تحصيل أرباح من هذا الموقع، نحن هنا لننجح في
+                تحسين
+                الظروف المعيشية للمواطنين اللبنانيين.
+
+                منذ أكثر من عام تقريبا، بدأت أكبر أزمة اقتصادية وسياسية في لبنان، ونحن نخطط لجعل حياة المواطنين
+                اللبنانيين
+                أسهل
+
+                وتعد الميديا تطبيقا على شبكة الإنترنت لتقاسم الأدوية، بهدف الحد من مخلفات الأدوية. وهي تفعل ذلك بربط
+                أولئك
+                الذين لديهم أدوية غير مرغوب فيها بالذين يحتاجون أو يرغبون في إستعمال مثل هذه الادوية. يجب أن يكون الدواء
+                في
+                حالة تشغيل قبل تاريخ انتهاء الصلاحية ويجب عدم العبث به. ويمكن للمرضى من جميع أنحاء لبنان دخول هذا الموقع
+                الإلكتروني وإما إعطاء أو التقاط الأدوية</p>
+        </div>
+
+    </div>
 {% endblock content %}
-</body>
+
 
 
 
