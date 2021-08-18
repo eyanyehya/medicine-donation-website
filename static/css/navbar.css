@@ -4,7 +4,7 @@
 */
 
 body {
-    background: #1B2E3C !important;
+    background: #F0DDBC !important;
     margin: 0;
 }
 
@@ -22,7 +22,7 @@ body {
     /*margin: 0 auto;*/
     top: 0;
 
-    background: #0C0C1E;
+    background: #3A4257;
     /*margin-left: -284.5px;*/
     position: fixed;
     width: 100vw;
