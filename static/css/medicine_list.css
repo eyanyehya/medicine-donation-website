@@ -6,6 +6,14 @@ h5 {
     color: #0088dd;
 }
 
+.row{
+    margin-top: 50px;
+}
+
+.list-group-item{
+    box-shadow: 5px 0 15px -4px rgba(31, 73, 125, 0.8), -5px 0 8px -4px rgba(31, 73, 125, 0.8);
+}
+
 ul {
     height: 100px;
 }
