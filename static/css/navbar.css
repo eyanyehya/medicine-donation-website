@@ -3,8 +3,16 @@
 * - Add any styles you want here!
 */
 
+.medonations-logo {
+    /*height: 473px;*/
+    /*width: 1280px;*/
+    height: 74px;
+    width: 200px;
+    margin-top: -17px;
+}
+
 body {
-    background: #1B2E3C !important;
+    background: #fadde1 !important;
     margin: 0;
 }
 
@@ -34,6 +42,7 @@ body {
 #list_of_links {
     height: 30px;
     margin-top: -0.8rem;
+    background-color: #0C0C1E;
 }
 
 
@@ -110,7 +119,8 @@ body {
 }
 
 .navbar-brand {
-    color: #fff;
+    /*height: 60px;*/
+    /*width: 400px;*/
 }
 
 .navbar-brand img {

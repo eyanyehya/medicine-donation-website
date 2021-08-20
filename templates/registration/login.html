@@ -13,11 +13,11 @@
 
     <div class="form">
         <div class="title">Log In</div>
-        <div class="subtitle">Let's create your account!</div>
+        <div class="title"> تسجيل الدخول</div>
         <div class="input-container ic1">
             <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" class="input" type="text" placeholder=" " value="{{ form.username.value|default_if_none:"" }}"/>
             <div class="cut"></div>
-            <label for="{{ form.username.id_for_label }}" class="placeholder">Name</label>
+            <label for="{{ form.username.id_for_label }}" class="placeholder">Username</label>
         </div>
         <div class="input-container ic2">
             <input id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" class="input" type="password" placeholder=" " value="{{ form.password.value|default_if_none:"" }}"/>

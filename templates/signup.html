@@ -2,8 +2,8 @@
 {% load static %}
 {% block title %}Signup{% endblock %}
 {% block styles %}
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
 {% endblock %}
 
 {#    {% block content %}#}
@@ -23,8 +23,8 @@
         {% csrf_token %}
 
         <div class="form">
-            <div class="title">Welcome</div>
-            <div class="subtitle">Let's create your account!</div>
+            <div class="title">Registration </div>
+            <div class="title">  التسجيل</div>
             <ul>
                 <li class="first_name">
                     <div class="input-container ic1">
@@ -69,12 +69,12 @@
             <button type="submit" class="submit">Sign Up</button>
         </div>
 
- </form>
-{##}
-{#        <form method="post">#}
-{#        {% csrf_token %}#}
-{#        {{ form.phone_number }}#}
-{##}
-{#    <button type="submit">Sign up</button>#}
-{#    </form>#}
+    </form>
+    {##}
+    {#        <form method="post">#}
+    {#        {% csrf_token %}#}
+    {#        {{ form.phone_number }}#}
+    {##}
+    {#    <button type="submit">Sign up</button>#}
+    {#    </form>#}
 {% endblock content %}

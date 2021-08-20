@@ -1,5 +1,5 @@
 .about_stl{
-    color: #e5e5e5;
+    color: black;
     margin-top: 7rem;
     margin-right: 2rem;
     margin-left: 2rem;
@@ -11,4 +11,5 @@
 
 .arb{
     font-size: 23pt;
+    font-style: 'Mirza', serif;
 }
