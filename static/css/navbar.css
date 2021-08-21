@@ -16,6 +16,21 @@ body {
     margin: 0;
 }
 
+.bouton-login{
+    background-color: #08d;
+    border-radius: 6px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 37px;
+    // outline: 0;
+    text-align: center;
+    margin-top: -.8vh;
+    width: 100%;
+}
+
 /* main-header start */
 [data-target="#mainMenu"] {
     position: relative;

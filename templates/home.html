@@ -71,10 +71,10 @@
 
 
     <div id="row" class="w3-row-padding">
-        <div class="w3-half">
+        <div class="w3-half" id="image_home">
             <img src="../static/images/home-page-img.png" alt="" class="home-image-center">
         </div>
-        <div class="w3-half">
+        <div class="w3-half" id="text_home">
 {#        IF USER IS LOGGED IN#}
             {% if user.is_authenticated %}
                 <h1 style="font-size:4em" class="font-for-english">Welcome {{ user.first_name }}!</h1>

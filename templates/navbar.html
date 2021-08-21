@@ -13,7 +13,7 @@
 <nav id="navbar" class="navbar navbar-expand-md main-nav py-1 py-lg-3 nav-fill w-100">
     <div class="container">
     <a href="{% url 'home' %}">
-        <img class="medonations-logo" src="../static/images/logo.png" alt="logo2">
+        <img class="medonations-logo" src="{% static  'images/logo.png'%}" alt="logo2">
     </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,9 +45,7 @@
                 <li>
                     <a href="{% url 'signup' %}" class="{% if request.path == signup %}active{% endif %}">Sign Up</a>
                 </li>
-                <li>
-                    <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">Log In</a>
-                </li>
+
             {% endif %}
                 <li>
                     <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>
@@ -62,6 +60,11 @@
                         <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+            </li>
+            <li>
+                    <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">
+                        <button class="bouton-login">Login</button>
+                    </a>
             </li>
         </ul>
     </div>
