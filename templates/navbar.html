@@ -63,7 +63,7 @@
             </li>
             <li>
                     <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">
-                        <button class="bouton-login">Login</button>
+                        <button class="bouton-login{% if request.path == login %} active {% endif %}">Log in</button>
                     </a>
             </li>
         </ul>

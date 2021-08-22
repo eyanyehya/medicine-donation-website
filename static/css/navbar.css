@@ -17,18 +17,24 @@ body {
 }
 
 .bouton-login{
-    background-color: #08d;
+    background-color: #0C0C1E;
     border-radius: 6px;
-    border: 0;
+    border-color: #eed3d7;
+    border-width: 2px;
     box-sizing: border-box;
-    color: #eee;
+    color: #eed3d7;
     cursor: pointer;
     font-size: 18px;
     height: 37px;
+    width: 75px;
     // outline: 0;
     text-align: center;
     margin-top: -.8vh;
-    width: 100%;
+}
+
+.bouton-login:after{
+    background-color: #eed3d7;
+    color: #0C0C1E;
 }
 
 /* main-header start */
