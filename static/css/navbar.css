@@ -32,7 +32,7 @@ body {
     margin-top: -.8vh;
 }
 
-.bouton-login:after{
+.bouton-login:active{
     background-color: #eed3d7;
     color: #0C0C1E;
 }
