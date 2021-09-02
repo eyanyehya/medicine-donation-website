@@ -3,6 +3,10 @@
 {% block title %}Search List{% endblock %}
 {% block styles %}
     <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&display=swap" rel="stylesheet">
 {% endblock %}
 
 
@@ -23,26 +27,28 @@
 
                     <!-- list group item -->
                     <li class="list-group-item">
+                        {#                        IF POST IS A DONATION#}
                         <div class="type-of-post-donate">
                             {% ifequal object.post_type 'Donate' %}
-                                <h6 id="post-type-donate">Donation</h6>
+                                <h6 style="font-family: 'Kaisei Tokumin', serif;" id="post-type-donate">Donation</h6>
                             {% endifequal %}
                         </div>
+                        {#                        IF POST IS A REQUEST#}
                         <div class="type-of-post-receive">
                             {% ifequal object.post_type 'Receive' %}
-                                <h6 id="post-type-receive">In Need Of</h6>
+                                <h6 style="font-family: 'Kaisei Tokumin', serif;" id="post-type-receive">In Need Of</h6>
                             {% endifequal %}
                         </div>
                         <!-- Custom content-->
                         <div class="media align-items-lg-center flex-column flex-lg-row p-1">
                             <div class="media-body order-2 order-lg-1">
                                 <a href="{% url 'post_detail' object.pk %}">
-                                    <h5 class="font-for-name">{{ object.medicine_name }}</h5>
+                                    <h5 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">{{ object.medicine_name }}</h5>
                                 </a>
-                                <p class="font-italic text-muted mb-0 small">{{ object.address }}</p>
-                                <h6 class="font-for-name">Quantity: {{ object.medicine_quantity }}</h6>
+                                <p style="font-family: 'Kaisei Tokumin', serif;" class="font-italic text-muted mb-0 small">{{ object.address }}</p>
+                                <h6 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">Quantity: {{ object.medicine_quantity }}</h6>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-for-name">{{ object.post_date_time }}</h6>
+                                    <h6 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">Posted on: {{ object.post_date_time }}</h6>
                                 </div>
                             </div>
                             {#                            <img src="{{ post.medicine_image.url }}">#}
@@ -50,6 +56,10 @@
                         </div>
                         <!-- End -->
                     </li><!-- End -->
+
+                    {% if forloop.counter == 5 %}
+                        <h1>One post displayed</h1>
+                    {% endif %}
 
                 {% endfor %}
 

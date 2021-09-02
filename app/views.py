@@ -92,12 +92,13 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+
 class PostUpdateView(UpdateView):
     model = MedicinePost
     template_name = 'post_edit.html'
     fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
               'phone_number']
-    success_url = reverse_lazy('medicine_list')
+    success_url = reverse_lazy('my_posts')
     login_url = 'login'
 
     def dispatch(self, request, *args, **kwargs):  # new
@@ -111,7 +112,7 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = MedicinePost
     template_name = 'post_delete.html'
-    success_url = reverse_lazy('post_new')
+    success_url = reverse_lazy('home')
     login_url = 'login'
 
     def dispatch(self, request, *args, **kwargs):  # new
@@ -138,6 +139,4 @@ class MyPostsListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['myPosts'] = MedicinePost.objects.filter(author=self.request.user)
         return context
-
-
 

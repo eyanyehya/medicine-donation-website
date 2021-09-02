@@ -71,23 +71,29 @@
 
 
     <div id="row" class="w3-row-padding">
-        <div class="w3-half">
-            <img src="../static/images/home-page-img.png" alt="" class="home-image-center">
-        </div>
+        {% if user.is_authenticated %}
+            <div class="w3-half">
+                <img src="../static/images/home-page-img.png" alt="" class="home-image-center">
+            </div>
+        {% else %}
+            <div class="w3-half">
+                <img src="../static/images/home-page-img.png" alt="" class="home-image-center">
+            </div>
+        {% endif %}
         <div class="w3-half">
 {#        IF USER IS LOGGED IN#}
             {% if user.is_authenticated %}
-                <h1 style="font-size:4em" class="font-for-english">Welcome {{ user.first_name }}!</h1>
+                <h1 style="font-size:4em" class="font-for-english">Welcome {{ user.first_name }} !</h1>
                 <br>
                 <br>
-                <div id="search_bar" class="input-group mb-5">
-                    <form action="{% url 'medicine_search' %}" method="get">
-                        <label>
-                            <input style="width: 920px;height: 54px;" name="q" placeholder="Search For Medicine" type="text" class="form-control">
-                        </label>
-                        <button style="height: 50px" id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
+{#                <div id="search_bar" class="input-group mb-5">#}
+{#                    <form action="{% url 'medicine_search' %}" method="get">#}
+{#                        <label>#}
+{#                            <input style="width: 920px;height: 54px;" name="q" placeholder="Search For Medicine" type="text" class="form-control">#}
+{#                        </label>#}
+{#                        <button style="height: 50px" id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>#}
+{#                    </form>#}
+{#                </div>#}
                 <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'post_new' %}" class="btn btn-info btn-lg btn-block" role="button">Donate / Request Medicine</a>
                 <br>
                 <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'my_posts' %}" class="btn btn-warning btn-lg btn-block" role="button">My Posts</a>
@@ -107,7 +113,7 @@
                         <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'login' %}" class="btn btn-primary btn-block" role="button">Log In</a>
                     </div>
                     <div class="w3-half">
-                        <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'about' %}" class="btn btn-secondary btn-block" role="button">About Us</a>
+                        <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'about' %}" class="btn btn-secondary btn-block" role="button">About Us / How It Works</a>
                     </div>
                 </div>
                 <br>
@@ -125,7 +131,7 @@
                         <a style="font-family:'Mirza', serif;font-size: 25px" href="{% url 'login' %}" class="btn btn-primary btn-block" role="button">تسجيل دخول</a>
                     </div>
                     <div class="w3-half">
-                        <a style="font-family:'Mirza', serif;font-size: 25px" href="{% url 'about' %}" class="btn btn-secondary btn-block" role="button">معلومات عنا</a>
+                        <a style="font-family:'Mirza', serif;font-size: 25px" href="{% url 'about' %}" class="btn btn-secondary btn-block" role="button">من نحن / كيف يعمل الموقع</a>
                     </div>
                 </div>
                 <br>

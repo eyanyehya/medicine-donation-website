@@ -8,11 +8,13 @@
     /*width: 1280px;*/
     height: 74px;
     width: 200px;
-    margin-top: -17px;
+    margin-top: -10px;
 }
 
 body {
     background: #fadde1 !important;
+    /*background: #ffafcc !important;*/
+    /*background: #2d2d7f !important;*/
     margin: 0;
 }
 
@@ -49,7 +51,7 @@ body {
 #mainMenu li > a {
     font-size: 1em;
     letter-spacing: 1px;
-    color: #e5e5e5;
+    color: #ffffff;
     font-weight: 400;
     position: relative;
     z-index: 1;

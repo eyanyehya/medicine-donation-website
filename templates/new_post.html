@@ -2,8 +2,11 @@
 {% load static %}
 {% block title %}Post Detail{% endblock %}
 {%  block styles %}
-        <link rel="stylesheet" href="{% static 'css/form.css' %}">
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    {#        <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="{% static 'css/form.css' %}" />#}
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="{% static 'css/map.css' %}" />
     <script src="{% static 'javascript/map.js' %}"></script>
 {% endblock %}
@@ -13,8 +16,11 @@
         {% csrf_token %}
 
         <div class="form">
-            <div class="title">Welcome</div>
-            <div class="subtitle">Create a post</div>
+            <div class="title">New Post</div>
+            <div class="title">منشور جديد</div>
+            <div class="input-container ic3">
+                I want to {{ form.post_type }} medicine.
+            </div>
             <div class="input-container ic1">
                 <input id="{{ form.medicine_name.id_for_label }}" name="{{ form.medicine_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.medicine_name.value|default_if_none:"" }}"/>
                 <div id="medicine_name-pop-up" class="cut"></div>
@@ -30,35 +36,36 @@
                 <div id="phone_number-pop-up" class="cut"></div>
                 <label for="{{ form.phone_number.id_for_label }}" class="placeholder">Phone Number</label>
             </div>
-            <div class="input-container ic3">
-                I want to {{ form.post_type }} medicine.
+            <div class="input-container ic2">
+                <input id="address" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
+                <div id="address-pop-up" class="cut cut-short"></div>
+                <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
             </div>
-            {% ifequal form.post_type 'Receive' %}
-                <div class="input-container ic2">
-                    <input id="address" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
-                    <div id="address-pop-up" class="cut cut-short"></div>
-                    <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
-                </div>
-            {% else %}
-                <div class="input-container ic2">
-                    <input id="{{ form.expiry_date.id_for_label }}" name="{{ form.expiry_date.html_name }}" class="input" type="date" placeholder=" " value="{{ form.expiry_date.value|default_if_none:"" }}"/>
-                    <div id="expiry_date-pop-up" class="cut"></div>
-                    <label for="{{ form.expiry_date.id_for_label }}" class="placeholder">Expiry Date</label>
-                </div>
-                <div class="input-container ic2">
-                    <input id="address" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
-                    <div id="address-pop-up" class="cut cut-short"></div>
-                    <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
-                </div>
-                <br/>
-                <div class="image">
-                    {{ form.medicine_image }}
-                </div>
-            {% endifequal %}
+            <br>
+            <div style="color: white">Please fill in the expiry date only if you are making a donation</div>
+            <div style="color: white"> يرجى ملء تاريخ انتهاء الصلاحية فقط إذا كنت تقوم بالتبرع</div>
+            <div style="color: white">Make sure that the date is written as <u>YYYY-MM-DD</u> if on computer</div>
+            <div style="color: white"><u>YYYY-MM-DD &nbsp;</u>إذا كنت تستخدم جهاز الكمبيوتر تأكد من كتابة هذا التاريخ بالصيغة  </div>
+            <div class="input-container ic2">
+                <input id="{{ form.expiry_date.id_for_label }}" name="{{ form.expiry_date.html_name }}" class="input" type="date" placeholder="  " value="{{ form.expiry_date.value|default_if_none:"" }}"/>
+                <div id="expiry_date-pop-up" class="cut"></div>
+                <label for="{{ form.expiry_date.id_for_label }}" class="placeholder">Expiry Date</label>
+            </div>
+            <div class="input-container ic3">
+                Upload Image
+                <br>
+                تحميل الصور
+            </div>
+            <br>
+            <div class="image">
+                {{ form.medicine_image }}
+            </div>
 
             <button type="submit" value="submit address" class="submit">Post</button>
         </div>
     </form>
+
+
 
 
 

@@ -3,6 +3,10 @@
 {% block title %}My Posts{% endblock %}
 {% block styles %}
     <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&display=swap" rel="stylesheet">
 {% endblock %}
 {% block content %}
     <div class="container py-5">
@@ -12,40 +16,39 @@
 
                 <ul id="list_of_medicines" class="list-group shadow">
 
-                {% for post in myPosts %}
+                    {% for post in myPosts %}
 
-
-                    <!-- list group item -->
-                    <li class="list-group-item">
-                        <div class="type-of-post-donate">
-                            {% ifequal post.post_type 'Donate' %}
-                                <h6 id="post-type-donate">Donation</h6>
-                            {% endifequal %}
-                        </div>
-                        <div class="type-of-post-receive">
-                            {% ifequal post.post_type 'Receive' %}
-                                <h6 id="post-type-receive">In Need Of</h6>
-                            {% endifequal %}
-                        </div>
-                        <!-- Custom content-->
-                        <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                            <div class="media-body order-2 order-lg-1">
-                                <a href="{% url 'post_detail' post.pk %}">
-                                    <h5 class="font-for-name">{{ post.medicine_name }}</h5>
-                                </a>
-                                <p class="font-italic text-muted mb-0 small">{{ post.address }}</p>
-                                <h6 class="font-for-name">Quantity: {{ post.medicine_quantity }}</h6>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-for-name">{{ post.post_date_time }}</h6>
-                                </div>
+                        <!-- list group item -->
+                        <li class="list-group-item">
+                            <div class="type-of-post-donate">
+                                {% ifequal post.post_type 'Donate' %}
+                                    <h6 style="font-family: 'Kaisei Tokumin', serif;" id="post-type-donate">Donation</h6>
+                                {% endifequal %}
                             </div>
-                            {#                            <img src="{{ post.medicine_image.url }}">#}
-                            <img src="{{ post.medicine_image.url }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div>
-                        <!-- End -->
-                    </li><!-- End -->
+                            <div class="type-of-post-receive">
+                                {% ifequal post.post_type 'Receive' %}
+                                    <h6 style="font-family: 'Kaisei Tokumin', serif;" id="post-type-receive">In Need Of</h6>
+                                {% endifequal %}
+                            </div>
+                            <!-- Custom content-->
+                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                                <div class="media-body order-2 order-lg-1">
+                                    <a href="{% url 'post_detail' post.pk %}">
+                                        <h5 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">{{ post.medicine_name }}</h5>
+                                    </a>
+                                    <p style="font-family: 'Kaisei Tokumin', serif;" class="font-italic text-muted mb-0 small">{{ post.address }}</p>
+                                    <h6 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">Quantity: {{ post.medicine_quantity }}</h6>
+                                    <div class="d-flex align-items-center justify-content-between mt-1">
+                                        <h6 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">Posted on: {{ post.post_date_time }}</h6>
+                                    </div>
+                                </div>
+                                {#                            <img src="{{ post.medicine_image.url }}">#}
+                                <img src="{{ post.medicine_image.url }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                            </div>
+                            <!-- End -->
+                        </li><!-- End -->
 
-                {% endfor %}
+                    {% endfor %}
 
                 </ul>
                 <!-- End -->

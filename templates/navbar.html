@@ -12,9 +12,9 @@
 
 <nav id="navbar" class="navbar navbar-expand-md main-nav py-1 py-lg-3 nav-fill w-100">
     <div class="container">
-    <a href="{% url 'home' %}">
-        <img class="medonations-logo" src="../static/images/logo.png" alt="logo2">
-    </a>
+        <a href="{% url 'home' %}">
+            <img class="medonations-logo" src="{% static '/images/logo.png' %}" alt="logo2">
+        </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="icon-bar icon-bar-1"></span>
@@ -40,6 +40,20 @@
                 <li>
                     <a href="{% url 'my_posts' %}" >My Posts</a>
                 </li>
+                <li>
+                    <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>
+                </li>
+                {#SEARCH BAR#}
+                <li>
+                    <div id="search_bar" class="input-group mb-5">
+                        <form action="{% url 'medicine_search' %}" method="get">
+                            <label>
+                                <input name="q" placeholder="Search For Medicine" type="text" class="form-control">
+                            </label>
+                            <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </li>
                 {#IF USER IS NOT LOGGED IN#}
             {% else %}
                 <li>
@@ -48,28 +62,28 @@
                 <li>
                     <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">Log In</a>
                 </li>
-            {% endif %}
                 <li>
                     <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>
                 </li>
+            {% endif %}
             {#SEARCH BAR#}
-            <li>
-                <div id="search_bar" class="input-group mb-5">
-                    <form action="{% url 'medicine_search' %}" method="get">
-                        <label>
-                            <input name="q" placeholder="Search For Medicine" type="text" class="form-control">
-                        </label>
-                        <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-            </li>
+            {#            <li>#}
+            {#                <div id="search_bar" class="input-group mb-5">#}
+            {#                    <form action="{% url 'medicine_search' %}" method="get">#}
+            {#                        <label>#}
+            {#                            <input name="q" placeholder="Search For Medicine" type="text" class="form-control">#}
+            {#                        </label>#}
+            {#                        <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>#}
+            {#                    </form>#}
+            {#                </div>#}
+            {#            </li>#}
         </ul>
     </div>
 </nav>
 
 
 
- <!-- Scripts at the end so the page loads faster -->
+<!-- Scripts at the end so the page loads faster -->
 
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

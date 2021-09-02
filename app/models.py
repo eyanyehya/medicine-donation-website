@@ -14,9 +14,9 @@ google_maps_access_token = 'AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk'
 class MedicinePost(models.Model):
     medicine_name = models.CharField(max_length=200, default='')
     medicine_quantity = models.IntegerField()
-    expiry_date = models.DateField()
+    expiry_date = models.DateField('Expiry Date', blank=True, null=True)
     post_date_time = models.DateTimeField(default=datetime.now, blank=True)
-    medicine_image = models.ImageField(upload_to='images/', default='/images/PNG_transparency_demonstration_1.png', )
+    medicine_image = models.ImageField(upload_to='images/', default='/logo.png', blank=True, null=True)
     phone_number = models.CharField(max_length=200, default='')
 
     POST_CHOICES = (

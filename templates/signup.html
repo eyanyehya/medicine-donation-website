@@ -25,22 +25,32 @@
         <div class="form">
             <div class="title">Registration </div>
             <div class="title">  التسجيل</div>
-            <ul>
-                <li class="first_name">
-                    <div class="input-container ic1">
-                        <input id="first-name-input" name="{{ form.first_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.first_name.value|default_if_none:"" }}"/>
-                        <div class="cut"></div>
-                        <label for="{{ form.first_name.id_for_label }}" class="placeholder">First Name</label>
-                    </div>
-                </li>
-                <li class="last_name">
-                    <div class="input-container ic1">
-                        <input id="last-name-input" name="{{ form.last_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.last_name.value|default_if_none:"" }}"/>
-                        <div id="last-name-pop-up" class="cut"></div>
-                        <label id="last-name-placeholder" for="{{ form.last_name.id_for_label }}" class="placeholder">Last Name</label>
-                    </div>
-                </li>
-            </ul>
+{#            <ul>#}
+{#                <li class="first_name">#}
+{#                    <div class="input-container ic1">#}
+{#                        <input id="first-name-input" name="{{ form.first_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.first_name.value|default_if_none:"" }}"/>#}
+{#                        <div class="cut"></div>#}
+{#                        <label for="{{ form.first_name.id_for_label }}" class="placeholder">First Name</label>#}
+{#                    </div>#}
+{#                </li>#}
+{#                <li class="last_name">#}
+{#                    <div class="input-container ic1">#}
+{#                        <input id="last-name-input" name="{{ form.last_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.last_name.value|default_if_none:"" }}"/>#}
+{#                        <div id="last-name-pop-up" class="cut"></div>#}
+{#                        <label id="last-name-placeholder" for="{{ form.last_name.id_for_label }}" class="placeholder">Last Name</label>#}
+{#                    </div>#}
+{#                </li>#}
+{#            </ul>#}
+            <div class="input-container ic2">
+                <input id="first-name-input" name="{{ form.first_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.first_name.value|default_if_none:"" }}"/>
+                <div class="cut"></div>
+                <label for="{{ form.first_name.id_for_label }}" class="placeholder">First Name</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="last-name-input" name="{{ form.last_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.last_name.value|default_if_none:"" }}"/>
+                <div id="last-name-pop-up" class="cut"></div>
+                <label id="last-name-placeholder" for="{{ form.last_name.id_for_label }}" class="placeholder">Last Name</label>
+            </div>
             <div class="input-container ic2">
                 <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" class="input" type="text" placeholder=" " value="{{ form.username.value|default_if_none:"" }}"/>
                 <div class="cut"></div>

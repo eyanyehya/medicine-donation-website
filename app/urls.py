@@ -13,6 +13,7 @@ urlpatterns = [
     path('post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
     path('my-posts/', MyPostsListView.as_view(), name='my_posts'),
 
+
     # other url patterns
     path('about/', AboutPageView.as_view(), name='about'),
     path('medicine_list/', MedicineListPageView.as_view(), name='medicine_list'),
