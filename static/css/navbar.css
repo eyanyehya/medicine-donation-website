@@ -18,6 +18,27 @@ body {
     margin: 0;
 }
 
+.bouton-login{
+    background-color: #0C0C1E;
+    border-radius: 6px;
+    border-color: #eed3d7;
+    border-width: 2px;
+    box-sizing: border-box;
+    color: #eed3d7;
+    cursor: pointer;
+    font-size: 18px;
+    height: 37px;
+    width: 75px;
+    // outline: 0;
+    text-align: center;
+    margin-top: -.8vh;
+}
+
+.bouton-login:active{
+    background-color: #eed3d7;
+    color: #0C0C1E;
+}
+
 /* main-header start */
 [data-target="#mainMenu"] {
     position: relative;
@@ -45,6 +66,8 @@ body {
     height: 30px;
     margin-top: -0.8rem;
     background-color: #0C0C1E;
+    font-size: 15px;
+  line-height: 1.5;
 }
 
 
