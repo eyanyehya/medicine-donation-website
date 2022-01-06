@@ -6,81 +6,127 @@
 {% url 'terms' as terms %}
 {% load static %}
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
-</head>
 
-<nav id="navbar" class="navbar navbar-expand-md main-nav py-1 py-lg-3 nav-fill w-100">
-    <div class="container">
-        <a href="{% url 'home' %}">
-            <img class="medonations-logo" src="{% static '/images/logo.png' %}" alt="logo2">
-        </a>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="icon-bar icon-bar-1"></span>
-        <span class="icon-bar icon-bar-2"></span>
-        <span class="icon-bar icon-bar-3"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="mainMenu">
-        <ul id="list_of_links" class="navbar-nav ml-auto text-uppercase f1">
-            <li>
-                <a href="{% url 'home' %}" class="{% if request.path == home %}active{% endif %}">home</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}" class="{% if request.path == about %}active{% endif %}">about us</a>
-            </li>
-            <li>
-                <a href="{% url 'post_new' %}" class="{% if request.path == post_new %}active{% endif %}">Donate/Request Medicine</a>
-            </li>
-            {#IF USER IS LOGGED IN#}
-            {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'logout' %}" >Log Out</a>
+{#    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">#}
+</head>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}"><img style="width: 15vh" class="medonations-logo" src="{% static '/images/logo.png' %}" alt="logo2"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
-                <li>
-                    <a href="{% url 'my_posts' %}" >My Posts</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About Us</a>
                 </li>
-                <li>
-                    <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post_new' %}">Donate / Request Medicine</a>
                 </li>
-                {#SEARCH BAR#}
-                <li>
-                    <div id="search_bar" class="input-group mb-5">
-                        <form action="{% url 'medicine_search' %}" method="get">
-                            <label>
-                                <input name="q" placeholder="Search For Medicine" type="text" class="form-control">
-                            </label>
-                            <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                </li>
-                {#IF USER IS NOT LOGGED IN#}
-            {% else %}
-                <li>
-                    <a href="{% url 'signup' %}" class="{% if request.path == signup %}active{% endif %}">Sign Up</a>
-                </li>
-                <li>
-                    <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">Log In</a>
-                </li>
-                <li>
-                    <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>
-                </li>
-            {% endif %}
-            {#SEARCH BAR#}
-            {#            <li>#}
-            {#                <div id="search_bar" class="input-group mb-5">#}
-            {#                    <form action="{% url 'medicine_search' %}" method="get">#}
-            {#                        <label>#}
-            {#                            <input name="q" placeholder="Search For Medicine" type="text" class="form-control">#}
-            {#                        </label>#}
-            {#                        <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>#}
-            {#                    </form>#}
-            {#                </div>#}
-            {#            </li>#}
-        </ul>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'my_posts' %}">My Posts</a>
+                    </li>
+
+                {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+            <form class="d-flex" action="{% url 'medicine_search' %}" method="get">
+                <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
     </div>
 </nav>
 
+
+{#<nav id="navbar" class="navbar navbar-expand-md main-nav py-1 py-lg-3 nav-fill w-100">#}
+{#    <div class="container">#}
+{#        <a href="{% url 'home' %}">#}
+{#            <img class="medonations-logo" src="{% static '/images/logo.png' %}" alt="logo2">#}
+{#        </a>#}
+{#    </div>#}
+{#    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">#}
+{#        <span class="icon-bar icon-bar-1"></span>#}
+{#        <span class="icon-bar icon-bar-2"></span>#}
+{#        <span class="icon-bar icon-bar-3"></span>#}
+{#    </button>#}
+{#    <div class="navbar-collapse collapse" id="mainMenu">#}
+{#        <ul id="list_of_links" class="navbar-nav ml-auto text-uppercase f1">#}
+{#            <li>#}
+{#                <a href="{% url 'home' %}" class="{% if request.path == home %}active{% endif %}">home</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="{% url 'about' %}" class="{% if request.path == about %}active{% endif %}">about us</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="{% url 'post_new' %}" class="{% if request.path == post_new %}active{% endif %}">Donate/Request Medicine</a>#}
+{#            </li>#}
+{#IF USER IS LOGGED IN#}
+{#            {% if user.is_authenticated %}#}
+{#                <li>#}
+{#                    <a href="{% url 'logout' %}" >Log Out</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="{% url 'my_posts' %}" >My Posts</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>#}
+{#                </li>#}
+{#SEARCH BAR#}
+{#                <li>#}
+{#                    <div id="search_bar" class="input-group mb-5">#}
+{#                        <form action="{% url 'medicine_search' %}" method="get">#}
+{#                            <label>#}
+{#                                <input name="q" placeholder="Search For Medicine" type="text" class="form-control">#}
+{#                            </label>#}
+{#                            <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </li>#}
+{#IF USER IS NOT LOGGED IN#}
+{#            {% else %}#}
+{#                <li>#}
+{#                    <a href="{% url 'signup' %}" class="{% if request.path == signup %}active{% endif %}">Sign Up</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="{% url 'login' %}" class="{% if request.path == login %}active{% endif %}">Log In</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="{% url 'terms'%}" class="{% if request.path == terms %}active{% endif %}">Terms of Service</a>#}
+{#                </li>#}
+{#            {% endif %}#}
+{#SEARCH BAR#}
+{#            <li>#}
+{#                <div id="search_bar" class="input-group mb-5">#}
+{#                    <form action="{% url 'medicine_search' %}" method="get">#}
+{#                        <label>#}
+{#                            <input name="q" placeholder="Search For Medicine" type="text" class="form-control">#}
+{#                        </label>#}
+{#                        <button id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </li>#}
+{#        </ul>#}
+{#    </div>#}
+{#</nav>#}
 
 
 <!-- Scripts at the end so the page loads faster -->

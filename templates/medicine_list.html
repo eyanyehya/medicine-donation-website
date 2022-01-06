@@ -5,51 +5,87 @@
     <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
-    <div class="container py-5">
 
+
+
+    <div class="container py-5">
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <ul id="list_of_medicines" class="list-group">
 
-                {% for post in posts %}
+                    {% for post in posts %}
 
-                    <!-- list group item -->
-                    <li class="list-group-item">
-                        <div class="type-of-post-donate">
-                            {% ifequal post.post_type 'Donate' %}
-                                <h6 id="post-type-donate">Donation</h6>
-                            {% endifequal %}
-                        </div>
-                        <div class="type-of-post-receive">
-                            {% ifequal post.post_type 'Receive' %}
-                                <h6 id="post-type-receive">In Need Of</h6>
-                            {% endifequal %}
-                        </div>
-                        <!-- Custom content-->
-                        <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                            <div class="media-body order-2 order-lg-1">
-                                <a href="{% url 'post_detail' post.pk %}">
-                                    <h5 class="font-for-name">{{ post.medicine_name }}</h5>
-                                </a>
-                                <p class="font-italic text-muted mb-0 small">{{ post.address }}</p>
-                                <h6 class="font-for-name">Quantity: {{ post.medicine_quantity }}</h6>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-for-name">{{ post.post_date_time }}</h6>
-                                </div>
+                        <!-- list group item -->
+                        <li class="list-group-item">
+                            <div class="type-of-post-donate">
+                                {% ifequal post.post_type 'Donate' %}
+                                    <h6 id="post-type-donate">Donation</h6>
+                                {% endifequal %}
                             </div>
-                            {#                            <img src="{{ post.medicine_image.url }}">#}
-                            <img src="{{ post.medicine_image.url }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div>
-                        <!-- End -->
-                    </li><!-- End -->
+                            <div class="type-of-post-receive">
+                                {% ifequal post.post_type 'Receive' %}
+                                    <h6 id="post-type-receive">In Need Of</h6>
+                                {% endifequal %}
+                            </div>
+                            <!-- Custom content-->
+                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                                <div class="media-body order-2 order-lg-1">
+                                    <a href="{% url 'post_detail' post.pk %}">
+                                        <h5 class="font-for-name">{{ post.medicine_name }}</h5>
+                                    </a>
+                                    <p class="font-italic text-muted mb-0 small">{{ post.address }}</p>
+                                    <h6 class="font-for-name">Quantity: {{ post.medicine_quantity }}</h6>
+                                    <div class="d-flex align-items-center justify-content-between mt-1">
+                                        <h6 class="font-for-name">{{ post.post_date_time }}</h6>
+                                    </div>
+                                </div>
+                                {#                            <img src="{{ post.medicine_image.url }}">#}
+                                <img src="{{ post.medicine_image.url }}" alt="Generic placeholder image" width="200"
+                                     class="ml-lg-5 order-1 order-lg-2">
+                            </div>
+                            <!-- End -->
+                        </li><!-- End -->
 
-                {% endfor %}
+                    {% endfor %}
 
                 </ul>
                 <!-- End -->
             </div>
         </div>
     </div>
+
+    <nav aria-label="Page navigation example">
+        {#    CODE THAT CREATES PAGINATION AND ALLOWS USERS TO CHOSE THE PAGE NUMBER RATHER THAN HAVING ALL THE POSTS ON ONE PAGE#}
+        {% if is_paginated %}
+            <ul class="pagination">
+
+                {#            IF THERE IS A PREVIOUS PAGE SHOW PREVIOUS LINK#}
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                                             href="{% url 'my_posts' %}?page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                {#           IF THERE IS A A PAGE WITH INDEX I SHOW IT AND CREATE LINK WITH I WRITTEN ON IT #}
+                {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="page-item"><a class="page-link">{{ i }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {#            IF THERE IS A NEXT PAGE SHOW NEXT LINK#}
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link"
+                                             href="{% url 'my_posts' %}?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </nav>
+
+
 
 
 

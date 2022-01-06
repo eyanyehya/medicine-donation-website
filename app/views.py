@@ -5,7 +5,7 @@ from .models import MedicinePost
 from django.urls import reverse_lazy, reverse
 from django.db.models import Q
 from django.http import HttpResponseRedirect
-from .forms import MedicineForm
+from .forms import MedicineForm, EditPostForm
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -38,30 +38,40 @@ class MedicineListPageView(ListView):
     context_object_name = 'posts'
 
 
-class MedicineSearchView(ListView):
+class MedicineSearchView(LoginRequiredMixin, ListView):
     model = MedicinePost
     template_name = 'search_for_medicine_results.html'
     context_object_name = 'posts'
+    paginate_by = 1
+    login_url = 'login'
 
     def get_queryset(self):  # new
         query = self.request.GET.get('q')
         object_list = MedicinePost.objects.filter(
-            Q(medicine_name__contains=query) | Q(address__contains=query)
+            Q(medicine_name__contains=query)
         )
         return object_list
 
 
 # POST VIEWS
 
+class PostCreateSuccessView(TemplateView):
+    template_name = 'post_create_success.html'
+
+
+class PostDeleteSuccessView(TemplateView):
+    template_name = 'post_delete_success.html'
+
+
 class PostCreateView(LoginRequiredMixin, CreateView):
-    # form_class = MedicineForm
-    model = MedicinePost
+    form_class = MedicineForm
+    # model = MedicinePost
     template_name = 'new_post.html'
-    fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
-              'phone_number', ]
+    # fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
+    #           'phone_number', ]
     login_url = 'login'
 
-    # success_url = reverse_lazy('home')
+    success_url = reverse_lazy('post_create_success')
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
@@ -92,12 +102,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-
 class PostUpdateView(UpdateView):
     model = MedicinePost
     template_name = 'post_edit.html'
     fields = ['address', 'medicine_name', 'medicine_quantity', 'expiry_date', 'medicine_image', 'post_type',
-              'phone_number']
+              'phone_number', 'extra_info']
     success_url = reverse_lazy('my_posts')
     login_url = 'login'
 
@@ -112,7 +121,7 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = MedicinePost
     template_name = 'post_delete.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('post_delete_success')
     login_url = 'login'
 
     def dispatch(self, request, *args, **kwargs):  # new
@@ -134,9 +143,24 @@ class MyPostsListView(LoginRequiredMixin, ListView):
     model = MedicinePost
     template_name = 'my_posts.html'
     login_url = 'login'
+    paginate_by = 1
+    context_object_name = "posts"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['myPosts'] = MedicinePost.objects.filter(author=self.request.user)
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['myPosts'] = MedicinePost.objects.filter(author=self.request.user)
+    #     return context
 
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated:
+            return MedicinePost.objects.filter(author=self.request.user)
+        return MedicinePost.objects.filter(author=None)
+
+
+class PasswordResetView(TemplateView):
+    template_name = 'registration/password_reset_form.html'
+
+
+class PasswordChangeView(TemplateView):
+    template_name = 'registration/password_change_form.html'

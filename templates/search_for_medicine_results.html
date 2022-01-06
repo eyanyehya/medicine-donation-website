@@ -1,73 +1,177 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load app_template_tags %}
 {% block title %}Search List{% endblock %}
 {% block styles %}
-    <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">
+    {#    <link href="{% static 'css/medicine_list.css' %}" rel="stylesheet">#}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&display=swap" rel="stylesheet">
+
+    <style>
+        #post-image {
+            vertical-align: middle;
+            border-style: none;
+            width: 100%;
+            height: 400px;
+            object-fit: scale-down;
+        }
+    </style>
 {% endblock %}
 
 
 {% block content %}
-    {#    {% for object in object_list %}#}
-    {#        <h1>There is {{ object.medicine }} in {{ object.address }}</h1>#}
-    {#    {% endfor %}#}
 
-    <div class="container py-5">
+    {% if object_list.count == 0 %}
 
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-
-                {% for object in object_list %}
-
-                    <!-- List group-->
-                    <ul class="list-group shadow">
-
-                    <!-- list group item -->
-                    <li class="list-group-item">
-                        {#                        IF POST IS A DONATION#}
-                        <div class="type-of-post-donate">
-                            {% ifequal object.post_type 'Donate' %}
-                                <h6 style="font-family: 'Kaisei Tokumin', serif;" id="post-type-donate">Donation</h6>
-                            {% endifequal %}
-                        </div>
-                        {#                        IF POST IS A REQUEST#}
-                        <div class="type-of-post-receive">
-                            {% ifequal object.post_type 'Receive' %}
-                                <h6 style="font-family: 'Kaisei Tokumin', serif;" id="post-type-receive">In Need Of</h6>
-                            {% endifequal %}
-                        </div>
-                        <!-- Custom content-->
-                        <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                            <div class="media-body order-2 order-lg-1">
-                                <a href="{% url 'post_detail' object.pk %}">
-                                    <h5 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">{{ object.medicine_name }}</h5>
-                                </a>
-                                <p style="font-family: 'Kaisei Tokumin', serif;" class="font-italic text-muted mb-0 small">{{ object.address }}</p>
-                                <h6 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">Quantity: {{ object.medicine_quantity }}</h6>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 style="font-family: 'Kaisei Tokumin', serif;" class="font-for-name">Posted on: {{ object.post_date_time }}</h6>
-                                </div>
-                            </div>
-                            {#                            <img src="{{ post.medicine_image.url }}">#}
-                            <img src="{{ object.medicine_image.url }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div>
-                        <!-- End -->
-                    </li><!-- End -->
-
-                    {% if forloop.counter == 5 %}
-                        <h1>One post displayed</h1>
-                    {% endif %}
-
-                {% endfor %}
-
-                </ul>
-                <!-- End -->
+        <div style="width: 100%; margin-top: 25vh" class="col d-flex justify-content-center">
+            <div class="card" style="width: 21.5rem;">
+                <div class="card-body">
+                    <div style="text-align: center" class="alert alert-secondary" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                        No results were found for your search
+                    </div>
+                </div>
             </div>
         </div>
+    {% endif %}
+
+
+    <div style="margin-top: 2vh; margin-bottom: 1vh" class="card-group col d-flex justify-content-center">
+        <ul class="list-group" style="list-style-type: none;margin-right: 2vh; margin-left: 2vh">
+            {% for object in object_list %}
+                <li>
+                    <div class="card" style="width: 100%">
+                        {% ifequal object.post_type 'Donate' %}
+                            <div class="card-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-gift" viewBox="0 0 16 16">
+                                    <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z"/>
+                                </svg>
+                                Donation
+                            </div>
+                        {% endifequal %}
+                        {% ifequal object.post_type 'Receive' %}
+                            <div class="card-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-hourglass" viewBox="0 0 16 16">
+                                    <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5zm2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702c0 .7-.478 1.235-1.011 1.491A3.5 3.5 0 0 0 4.5 13v1h7v-1a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351v-.702c0-.7.478-1.235 1.011-1.491A3.5 3.5 0 0 0 11.5 3V2h-7z"/>
+                                </svg>
+                                Request
+                            </div>
+                        {% endifequal %}
+                        <img style="vertical-align: middle;border-style: none;width: 400px;height: 400px;object-fit: contain;"
+                             id="post-image" src="{{ object.medicine_image.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{ object.medicine_name }}</b></h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                    </svg>
+                                    {% if object.post_type == 'Donate' %}
+                                        Type: Donation
+                                    {% endif %}
+                                    {% if object.post_type == 'Receive' %}
+                                        Type: Request (In need of {{ object.medicine_name }})
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-basket3" viewBox="0 0 16 16">
+                                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"/>
+                                    </svg>
+                                    Quantity: {{ object.medicine_quantity }}</li>
+                                <li class="list-group-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    </svg>
+                                    {{ object.address }}</li>
+                            </ul>
+                            <br>
+                            <p class="card-text"><small class="text-muted">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-calendar3-week" viewBox="0 0 16 16">
+                                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                                    <path d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+
+                                Uploaded on {{ object.post_date_time }}</small>
+                            </p>
+
+                            <div class="d-grid gap-2">
+                                <a href="{% url 'post_detail' object.pk %}" class="btn btn-primary btn-block"
+                                   role="button">More
+                                    Information</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <br>
+            {% endfor %}
+        </ul>
     </div>
+
+
+    <div>
+        <nav aria-label="Page navigation example">
+            {#    CODE THAT CREATES PAGINATION AND ALLOWS USERS TO CHOSE THE PAGE NUMBER RATHER THAN HAVING ALL THE POSTS ON ONE PAGE#}
+            {% if is_paginated %}
+                <ul class="pagination justify-content-center">
+
+                    {#            IF THERE IS A PREVIOUS PAGE SHOW PREVIOUS LINK#}
+                    {% if page_obj.has_previous %}
+                        {#                        <li class="page-item"><a class="page-link"#}
+                        {#                                                 href="{% url 'medicine_search' %}?page={{ page_obj.previous_page_number }}&q={{ query }}">Previous</a>#}
+                        {#                        </li>#}
+                        <li class="page-item"><a class="page-link"
+                                                 href="{% my_url page_obj.previous_page_number 'page' request.GET.urlencode %}">Previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {#           IF THERE IS A A PAGE WITH INDEX I SHOW IT AND CREATE LINK WITH I WRITTEN ON IT #}
+                    {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                        {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+
+                            {#                            <li class="page-item"><a class="page-link" href="?page={{ i }}&q={{ query }}">{{ i }}</a>#}
+                            {#                            </li>#}
+                            <li class="page-item"><a class="page-link"
+                                                     href="{% my_url i 'page' request.GET.urlencode %}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {#            IF THERE IS A NEXT PAGE SHOW NEXT LINK#}
+                    {% if page_obj.has_next %}
+                        {#                        <li class="page-item"><a class="page-link"#}
+                        {#                                                 href="{% url 'medicine_search' %}?page={{ page_obj.next_page_number }}&q={{ query }}">Next</a>#}
+                        {#                        </li>#}
+                        <li class="page-item"><a class="page-link"
+                                                 href="{% my_url page_obj.next_page_number 'page' request.GET.urlencode %}">Next</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </nav>
+    </div>
+
 
 
 {% endblock content %}

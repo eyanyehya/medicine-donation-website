@@ -28,10 +28,10 @@ html, body {
     display: inline;
 }
 
-.column {
-  float: left;
-  width: 50%;
-}
+/*.column {*/
+/*  float: left;*/
+/*  width: 50%;*/
+/*}*/
 
 #row {
     margin-top: 7.5vh;

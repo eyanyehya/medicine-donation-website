@@ -1,10 +1,13 @@
 from datetime import datetime
 from django.db import models
+from django import forms
 from django.urls import reverse
 import geocoder
 from django.conf import settings
 from django import forms
 from django.contrib.auth import get_user_model
+from django.utils.safestring import mark_safe
+from phonenumber_field.modelfields import PhoneNumberField
 
 # token
 google_maps_access_token = 'AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk'
@@ -14,23 +17,28 @@ google_maps_access_token = 'AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk'
 class MedicinePost(models.Model):
     medicine_name = models.CharField(max_length=200, default='')
     medicine_quantity = models.IntegerField()
-    expiry_date = models.DateField('Expiry Date', blank=True, null=True)
+    # expiry_date = models.DateField('Expiry Date', blank=True, null=True)
+    # expiry_date = models.CharField(max_length=200, default='')
+    expiry_date = models.CharField('Expiry Date', blank=True, null=True, max_length=200)
     post_date_time = models.DateTimeField(default=datetime.now, blank=True)
-    medicine_image = models.ImageField(upload_to='images/', default='/logo.png', blank=True, null=True)
-    phone_number = models.CharField(max_length=200, default='')
+    medicine_image = models.ImageField(upload_to='images/', blank=False)
+    phone_number = PhoneNumberField(null=False, blank=False)
+    extra_info = models.TextField(null=True, blank=True)
+
 
     POST_CHOICES = (
-        ('Donate', 'Donate'),
-        ('Receive', 'Receive')
+        ('', 'Select Post Type'),
+        ('Donate', 'Donation'),
+        ('Receive', 'Request')
     )
-    post_type = models.CharField(max_length=20, choices=POST_CHOICES, default="JANUARY")
+    post_type = models.CharField(max_length=20, choices=POST_CHOICES)
 
     widgets = {
         'post_type': forms.Select(attrs={'class': 'bootstrap-select'}),
     }
 
     # MAPBOX STUFF
-    address = models.TextField(default='')
+    address = models.TextField(default="")
     lat = models.FloatField(blank=True, null=True)
     long = models.FloatField(blank=True, null=True)
 

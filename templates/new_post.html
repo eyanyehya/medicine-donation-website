@@ -1,77 +1,163 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 {% load static %}
+{% load app_template_tags %}
 {% block title %}Post Detail{% endblock %}
-{%  block styles %}
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
-    {#        <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="{% static 'css/form.css' %}" />#}
+{% block styles %}
 
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" href="{% static 'css/map.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/map.css' %}"/>
     <script src="{% static 'javascript/map.js' %}"></script>
 {% endblock %}
 {% block content %}
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+    <style>
+        .asteriskField {
+            display: none;
+        }
+    </style>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+    </style>
 
-        <div class="form">
-            <div class="title">New Post</div>
-            <div class="title">منشور جديد</div>
-            <div class="input-container ic3">
-                I want to {{ form.post_type }} medicine.
-            </div>
-            <div class="input-container ic1">
-                <input id="{{ form.medicine_name.id_for_label }}" name="{{ form.medicine_name.html_name }}" class="input" type="text" placeholder=" " value="{{ form.medicine_name.value|default_if_none:"" }}"/>
-                <div id="medicine_name-pop-up" class="cut"></div>
-                <label for="{{ form.medicine_name.id_for_label }}" class="placeholder">Medicine Name</label>
-            </div>
-            <div class="input-container ic2">
-                <input id="{{ form.medicine_quantity.id_for_label }}" name="{{ form.medicine_quantity.html_name }}" class="input" type="number" placeholder=" " value="{{ form.medicine_quantity.value|default_if_none:"" }}"/>
-                <div id="medicine_quantity-pop-up" class="cut"></div>
-                <label for="{{ form.medicine_quantity.id_for_label }}" class="placeholder">Quantity</label>
-            </div>
-            <div class="input-container ic1">
-                <input id="{{ form.phone_number.id_for_label }}" name="{{ form.phone_number.html_name }}" class="input" type="text" placeholder=" " value="{{ form.phone_number.value|default_if_none:"" }}"/>
-                <div id="phone_number-pop-up" class="cut"></div>
-                <label for="{{ form.phone_number.id_for_label }}" class="placeholder">Phone Number</label>
-            </div>
-            <div class="input-container ic2">
-                <input id="address" name="{{ form.address.html_name }}" class="input" type="text" placeholder=" " value="{{ form.address.value|default_if_none:"" }}"/>
-                <div id="address-pop-up" class="cut cut-short"></div>
-                <label for="{{ form.address.id_for_label }}" class="placeholder">Address</label>
-            </div>
-            <br>
-            <div style="color: white">Please fill in the expiry date only if you are making a donation</div>
-            <div style="color: white"> يرجى ملء تاريخ انتهاء الصلاحية فقط إذا كنت تقوم بالتبرع</div>
-            <div style="color: white">Make sure that the date is written as <u>YYYY-MM-DD</u> if on computer</div>
-            <div style="color: white"><u>YYYY-MM-DD &nbsp;</u>إذا كنت تستخدم جهاز الكمبيوتر تأكد من كتابة هذا التاريخ بالصيغة  </div>
-            <div class="input-container ic2">
-                <input id="{{ form.expiry_date.id_for_label }}" name="{{ form.expiry_date.html_name }}" class="input" type="date" placeholder="  " value="{{ form.expiry_date.value|default_if_none:"" }}"/>
-                <div id="expiry_date-pop-up" class="cut"></div>
-                <label for="{{ form.expiry_date.id_for_label }}" class="placeholder">Expiry Date</label>
-            </div>
-            <div class="input-container ic3">
-                Upload Image
-                <br>
-                تحميل الصور
-            </div>
-            <br>
-            <div class="image">
-                {{ form.medicine_image }}
-            </div>
+<body style="background-image: url('{% static '/images/1.jpg' %}'); background-position: center; background-repeat: no-repeat;">
 
-            <button type="submit" value="submit address" class="submit">Post</button>
+    <div style="width: 100%" class="col d-flex justify-content-center">
+        <div class="card border-dark mb-3" style="width: 30rem; margin-top: 2vh; margin-left: 2vh; margin-right: 2vh">
+            <div class="card-header">
+                <div style="text-align: left; margin-top: 5vh">
+                    <h1 style="font-family: sans-serif;font-size: 25px;font-weight: 600;">New Post</h1>
+                </div>
+            </div>
+            <div class="card-body" style="margin-top: -2vh; margin-bottom: -3vh">
+                <p class="card-text">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="alert alert-info" role="alert">
+                                Not sure what to write?
+                                <br>
+                                <a class="alert-link" data-bs-toggle="offcanvas"
+                                                           href="#offcanvasExample">More Information</a>
+                            </div>
+                        </li>
+                        <li class="list-group-item">{{ form.post_type|as_crispy_field }}</li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div style="margin-bottom: 1vh" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
+                                     id="name">
+                                    {{ form.medicine_name|addcss:"form-control" }}
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                    {{ form.medicine_quantity|as_crispy_field }}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div style="margin-bottom: 1vh">{{ form.phone_number|as_crispy_field }}</div>
+                            <p style=" color: black; margin-bottom: -0.75vh; text-align: center">Expiry Date (If
+                                donating)</p>
+                            <div style="margin-top: 1vh">{{ form.expiry_date|as_crispy_field }}</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div style="margin-top: 1vh" class="row">
+                                <div class="mb-3">
+                                    <p style="color: black; margin-top: -0.5vh; margin-bottom: -0.1vh; text-align: center">
+                                        Address</p>
+                                    <input id="address" class="form-control" name="{{ form.address.html_name }}"
+                                           type="text"
+                                           value="{{ form.address.value }}" required/>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            {{ form.extra_info|as_crispy_field }}
+                        </li>
+                        <li class="list-group-item">
+                            <div style="margin-bottom: -2vh; margin-top: 2vh">
+                                {{ form.medicine_image|addcss:"form-control" }}
+                            </div>
+                        </li>
+                    </ul>
+                    <br>
+                    <br>
+                    <div style="margin-bottom: 5vh" class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit">Post</button>
+                    </div>
+                </form>
+                {% include 'bootstrap4/layout/help_text_and_errors.html' %}
+            </div>
         </div>
-    </form>
+    </div>
+</body>
+    {##}
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel"><b>Creating Post</b></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <b><u>Post Type</u></b>
+                <br>
+                If you are <u>donating</u> medicine select <b>Donation</b>
+                <br>
+                If you are <u>requesting</u> medicine select <b>Request</b>
 
+                <br>
+                <br>
+                <b><u>Medicine Name</u></b>
+                <br>
+                The name of the medicine you are donating or requesting
+                <br>
+                eg. Panadol
 
+                <br>
+                <br>
+                <b><u>Medicine Quantity</u></b>
+                <br>
+                The amount of medicine you are donating or requesting
+                <br>
+                eg. 5
+
+                <br>
+                <br>
+                <b><u>Phone Number</u></b>
+                <br>
+                The phone number you want to use when contacting others
+                <br>
+                eg. +12125552368
+                <br>
+                <br>
+                <b><u>Address</u></b>
+                <br>
+                The address where you want the exchange to take place.
+
+                <br>
+                <br>
+                <b><u>Expiry Date</u></b>
+                <br>
+                <b>Only fill this out if you are donating medicine</b>
+                <br>
+                The date when the medicine expires
+            </div>
+        </div>
+    </div>
 
 
 
 
     <script>
         let address;
+
         function initAutocomplete() {
             address = new google.maps.places.Autocomplete(
                 document.getElementById('address'),
@@ -91,9 +177,5 @@
             async
             defer>
     </script>
-
-
-
-
 
 {% endblock content %}

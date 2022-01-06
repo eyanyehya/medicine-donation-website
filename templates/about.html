@@ -2,73 +2,79 @@
 {% load static %}
 {% block title %}About Us{% endblock %}
 {% block styles %}
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
-    <link href="{% static 'css/about.css' %}" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Markazi+Text&family=Mirza:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-    <div class="about_stl">
-        <div class="engl">
-
-            <h1 style="font-family: 'Markazi Text', serif;">Who We Are?</h1>
-
-            <h2 style="font-family: 'Markazi Text', serif;">Medonations, Do good, touch every aspect of our team. We see that our initiative will make a great
-                impact on
-                Lebanon’s future.</h2>
 
 
-            <p style="font-family: 'Markazi Text', serif;">As an independent initiative that is 100% with supporting the Lebanese people. Our goal is not to
-                generate
-                any revenue from this website, we are here to successfully improve the living conditions of Lebanese
-                citizens.
+    <div style="text-align: center; margin-left: 2vh; margin-right: 2vh; margin-top: 2vh; border-style: wave">
+        <h1 style="font-family: 'Rakkas', cursive;">Who are <span style="color: red">we</span>?</h1>
+        <p style="font-family: 'Zen Antique',serif;">
+            We are a group of cousins from Aley, Lebanon, of ages ranging from 9 to 20 years old living in Lebanon,
+            Canada, France and the UAE who in the summer of 2021 looked at the state of our country and said enough is
+            enough. We decided that if no one supports and helps our country when it needs the most help, we, the people
+            will. That is how Medonations was born.</p>
+        <h1 style="font-family: 'Rakkas', cursive;">من <span style="color: red">نحن </span></h1>
+        <p style="font-family: 'Lateef', cursive; font-size: 25px">نحن مجموعة صغيرة من عاليه ، لبنان ، تتراوح أعمارنا
+            بين 9 و 20 عامًا
+            ونعيش في لبنان وكندا وفرنسا والإمارات. في صيف 2021 نظرنا إلى حالة بلادنا وقلنا كفى. قررنا أنه إذا لم يكن
+            هناك من يدعم بلدنا ويساعده عندما يحتاج إلى أكبر قدر من المساعدة ، فإننا ، نحن الشعب ، سنقوم بذلك. وهكذا ولدت
+            المنصة.
+        </p>
+        <h1 style="font-family: 'Rakkas', cursive;">What is <span style="color: red">Medonations</span>?</h1>
+        <p style="font-family: 'Zen Antique',serif;">
+            Medonations is a website that allows people living in Lebanon to donate or request non-prescription
+            medicine. Users of Medonations are divided into two categories, donors and receivers. If you need a specific
+            type of non-prescription medicine, you can create a request post asking for that medicine, and if someone
+            who has the medication you need sees your post, they can get in contact with you and kindly donate. Suppose
+            you have spare or excess non-prescription medicine you can afford to donate. In that case, you can create a
+            donation post, so someone who needs your medication can contact you and receive your donation. The website's
+            goal is to connect those who have spare non-prescription medicine that they can donate and those who need
+            that medicine.
+            Medonations is a non-profit website and will always be free. We hope that it will be a temporary solution to
+            the crisis that is hitting the medical sector in our country and that we can ease the burden from our
+            beloved people in Lebanon.
+        </p>
+        <h1 style="font-family: 'Rakkas', cursive;">ما هو <span style="color: red">الموقع </span></h1>
+        <p style="font-family: 'Lateef', cursive; font-size: 25px">
+            يتيح موقعنا الإلكتروني للأشخاص الذين يعيشون في لبنان التبرع بالأدوية التي لا تتطلب وصفة طبية أو طلبها. ينقسم
+            مستخدمو منصتنا إلى فئتين ، المتبرعين والمستلمين. إذا كنت بحاجة إلى نوع معين من الأدوية التي لا تتطلب وصفة
+            طبية ، فيمكنك إنشاء طلب لهذا الدواء ، وإذا رأى شخص لديه الدواء الذي تحتاجه منشورك ، فيمكنه الاتصال بك
+            والتبرع. لنفترض أن لديك احتياطيًا أو زائدًا من الأدوية التي لا تتطلب وصفة طبية يمكنك التبرع بها. في هذه
+            الحالة ، يمكنك إنشاء منشور تبرع ، حتى يتمكن الشخص الذي يحتاج إلى دوائك من الاتصال بك وتلقي تبرعك. هدف الموقع
+            هو ربط أولئك الذين لديهم أدوية بدون وصفة طبية يمكنهم التبرع بها ، وأولئك الذين يحتاجون إلى هذا الدواء.
+            هدفنا هو إنشاء موقع غير ربحي وسيكون دائمًا مجانيًا. نأمل أن يكون حلاً مؤقتاً للأزمة التي تعصف بالقطاع الطبي
+            في بلدنا ، وأن نتمكن من تخفيف العبء عن أحبائنا في لبنان.
+        </p>
+        <h1 style="font-family: 'Rakkas', cursive;">Contact <span style="color: red">Us</span></h1>
+        <p style="font-family: 'Zen Antique', sans-serif;">
+            Medonations is a website for all Lebanese people so if you have any suggestions or ideas for improving
+            the website please contact us.</p>
+        <p style="font-family: 'Zen Antique', sans-serif;">Email : medonations.lb@gmail.com</p>
 
-                Just over a year ago the start of Lebanon’s biggest economic and political crisis began, we plan on
-                making
-                Lebanese citizens lives easier.
 
-                Medonations is a web-app for Pharmaceutical-sharing, aiming to reduce medicine waste. It does this by
-                connecting those with unwanted pharmaceuticals to those who need or wish to use such meds. The medicine
-                must
-                be on before expiry date and it must not be tampered with. Patients from all around Lebanon can enter
-                this
-                website and either give away or pick up pharmaceuticals.</p>
-        </div>
-
-                <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'signup' %}" class="btn btn-dark btn-lg btn-block" role="button">Get Started</a>
-
-
-        <br>
-        <div class="arb">
-
-            <h1 style="font-family:'Mirza', serif;">من نحن؟</h1>
-
-            <h2 style="font-family:'Mirza', serif;">‏Medonations, فعل الخير، يمس كل جوانب فريقنا. نحن نرى أن مبادرتنا ستؤثر بشكل كبير على مستقبل لبنان.</h2>
-
-
-            <p style="font-family:'Mirza', serif;">مبادرة مستقلة بنسبة 100٪ مع دعم الشعب اللبناني. هدفنا ليس تحصيل أرباح من هذا الموقع، نحن هنا لننجح في
-                تحسين
-                الظروف المعيشية للمواطنين اللبنانيين.
-
-                منذ أكثر من عام تقريبا، بدأت أكبر أزمة اقتصادية وسياسية في لبنان، ونحن نخطط لجعل حياة المواطنين
-                اللبنانيين
-                أسهل
-
-                وتعد الميديا تطبيقا على شبكة الإنترنت لتقاسم الأدوية، بهدف الحد من مخلفات الأدوية. وهي تفعل ذلك بربط
-                أولئك
-                الذين لديهم أدوية غير مرغوب فيها بالذين يحتاجون أو يرغبون في إستعمال مثل هذه الادوية. يجب أن يكون الدواء
-                في
-                حالة تشغيل قبل تاريخ انتهاء الصلاحية ويجب عدم العبث به. ويمكن للمرضى من جميع أنحاء لبنان دخول هذا الموقع
-                الإلكتروني وإما إعطاء أو التقاط الأدوية</p>
-        </div>
-
-        <a style="font-family:'Mirza', serif;font-size: 25px" href="{% url 'signup' %}" class="btn btn-dark btn-lg btn-block" role="button">ابدأ </a>
-
+        <h1 style="font-family: 'Rakkas', cursive;">اتصل <span style="color: red">بنا </span></h1>
+        <p style="font-family: 'Lateef', cursive; font-size: 25px">هذا الموقع لجميع اللبنانيين ، لذا إذا كان لديك أي
+            اقتراحات أو أفكار لتحسين الموقع ، يرجى الاتصال بنا.</p>
+        <p style="font-family: 'Zen Antique', sans-serif;">Email : medonations.lb@gmail.com</p>
     </div>
+
+
+    <div style="text-align: center;"><img style="width: 400px; margin-top: 2vh; margin-bottom: 2vh; text-align: center" src="{% static '/images/tiana_art.jpg' %}" alt="logo2"></div>
+
+
 
 
 {% endblock content %}
