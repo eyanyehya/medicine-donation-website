@@ -47,7 +47,7 @@
             {% for object in object_list %}
                 <li>
                     <div class="card" style="width: 100%">
-                        {% ifequal object.post_type 'Donate' %}
+                        {% if object.post_type == 'Donate' %}
                             <div class="card-header">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-gift" viewBox="0 0 16 16">
@@ -55,8 +55,8 @@
                                 </svg>
                                 Donation
                             </div>
-                        {% endifequal %}
-                        {% ifequal object.post_type 'Receive' %}
+                        {% endif %}
+                        {% if object.post_type == 'Receive' %}
                             <div class="card-header">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-hourglass" viewBox="0 0 16 16">
@@ -64,7 +64,7 @@
                                 </svg>
                                 Request
                             </div>
-                        {% endifequal %}
+                        {% endif %}
                         <img style="vertical-align: middle;border-style: none;width: 400px;height: 400px;object-fit: contain;"
                              id="post-image" src="{{ object.medicine_image.url }}" class="card-img-top" alt="...">
                         <div class="card-body">

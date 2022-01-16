@@ -21,13 +21,13 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title" style="text-align: center"><b>Confirm</b></h5>
-                        {% ifequal medicinepost.post_type "Donate" %}
+                        {% if medicinepost.post_type == "Donate" %}
                             <p class="card-text">Are you sure you want to delete your post
                                 donating {{ medicinepost.medicine_name }}?</p>
                         {% else %}
                             <p class="card-text">Are you sure you want to delete your post
                                 requesting {{ medicinepost.medicine_name }}?</p>
-                        {% endifequal %}
+                        {% endif %}
                     </div>
                     <button style="margin-bottom: 1vh; margin-right: 1vh; margin-left: 1vh" value="Confirm"
                             type="submit"

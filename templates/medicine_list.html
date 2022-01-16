@@ -18,14 +18,14 @@
                         <!-- list group item -->
                         <li class="list-group-item">
                             <div class="type-of-post-donate">
-                                {% ifequal post.post_type 'Donate' %}
+                                {% if post.post_type == 'Donate' %}
                                     <h6 id="post-type-donate">Donation</h6>
-                                {% endifequal %}
+                                {% endif %}
                             </div>
                             <div class="type-of-post-receive">
-                                {% ifequal post.post_type 'Receive' %}
+                                {% if post.post_type == 'Receive' %}
                                     <h6 id="post-type-receive">In Need Of</h6>
-                                {% endifequal %}
+                                {% endif %}
                             </div>
                             <!-- Custom content-->
                             <div class="media align-items-lg-center flex-column flex-lg-row p-1">
