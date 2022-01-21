@@ -27,78 +27,93 @@
         }
     </style>
 
-<body style="background-image: url('{% static '/images/1.jpg' %}'); background-position: center; background-repeat: no-repeat;">
+{#    <body style="background-image: url('{% static '/images/4.jpg' %}'); background-position: center; background-repeat: no-repeat;">#}
 
-    <div style="width: 100%" class="col d-flex justify-content-center">
-        <div class="card border-dark mb-3" style="width: 30rem; margin-top: 2vh; margin-left: 2vh; margin-right: 2vh">
-            <div class="card-header">
-                <div style="text-align: left; margin-top: 5vh">
-                    <h1 style="font-family: sans-serif;font-size: 25px;font-weight: 600;">New Post</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-6">
+                <div style="width: 100%; margin-top: 2vh" class="col d-flex justify-content-center">
+                    <div class="card border-dark mb-3"
+                         style="width: 30rem; margin-left: 2vh; margin-right: 2vh">
+                        <div class="card-header">
+                            <div style="text-align: left; margin-top: 5vh">
+                                <h1 style="font-family: sans-serif;font-size: 25px;font-weight: 600;">New Post</h1>
+                            </div>
+                        </div>
+                        <div class="card-body" style="margin-top: -2vh; margin-bottom: -3vh">
+                            <p class="card-text">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="alert alert-info" role="alert">
+                                            Not sure what to write?
+                                            <br>
+                                            <a class="alert-link" data-bs-toggle="offcanvas"
+                                               href="#offcanvasExample">More Information</a>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">{{ form.post_type|as_crispy_field }}</li>
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div style="margin-bottom: 1vh"
+                                                 class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
+                                                 id="name">
+                                                {{ form.medicine_name|addcss:"form-control" }}
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                                {{ form.medicine_quantity|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="margin-bottom: 1vh">{{ form.phone_number|as_crispy_field }}</div>
+                                        <p style=" color: black; margin-bottom: -0.75vh; text-align: center">Expiry Date
+                                            (If
+                                            donating)</p>
+                                        <div style="margin-top: 1vh">{{ form.expiry_date|as_crispy_field }}</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="margin-top: 1vh" class="row">
+                                            <div class="mb-3">
+                                                <p style="color: black; margin-top: -0.5vh; margin-bottom: -0.1vh; text-align: center">
+                                                    Address</p>
+                                                <input id="address" class="form-control"
+                                                       name="{{ form.address.html_name }}"
+                                                       type="text"
+                                                       value="{{ form.address.value }}" required/>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        {{ form.extra_info|as_crispy_field }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <p style=" color: black; text-align: center; margin-bottom: -1vh">Image</p>
+                                        <div style="margin-bottom: -2vh; margin-top: 1vh">
+                                            {{ form.medicine_image|addcss:"form-control" }}
+                                        </div>
+                                    </li>
+                                </ul>
+                                <br>
+                                <br>
+                                <div style="margin-bottom: 5vh" class="d-grid gap-2">
+                                    <button class="btn btn-success" type="submit">Post</button>
+                                </div>
+                            </form>
+                            {% include 'bootstrap4/layout/help_text_and_errors.html' %}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card-body" style="margin-top: -2vh; margin-bottom: -3vh">
-                <p class="card-text">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="alert alert-info" role="alert">
-                                Not sure what to write?
-                                <br>
-                                <a class="alert-link" data-bs-toggle="offcanvas"
-                                                           href="#offcanvasExample">More Information</a>
-                            </div>
-                        </li>
-                        <li class="list-group-item">{{ form.post_type|as_crispy_field }}</li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div style="margin-bottom: 1vh" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
-                                     id="name">
-                                    {{ form.medicine_name|addcss:"form-control" }}
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                    {{ form.medicine_quantity|as_crispy_field }}
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div style="margin-bottom: 1vh">{{ form.phone_number|as_crispy_field }}</div>
-                            <p style=" color: black; margin-bottom: -0.75vh; text-align: center">Expiry Date (If
-                                donating)</p>
-                            <div style="margin-top: 1vh">{{ form.expiry_date|as_crispy_field }}</div>
-                        </li>
-                        <li class="list-group-item">
-                            <div style="margin-top: 1vh" class="row">
-                                <div class="mb-3">
-                                    <p style="color: black; margin-top: -0.5vh; margin-bottom: -0.1vh; text-align: center">
-                                        Address</p>
-                                    <input id="address" class="form-control" name="{{ form.address.html_name }}"
-                                           type="text"
-                                           value="{{ form.address.value }}" required/>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            {{ form.extra_info|as_crispy_field }}
-                        </li>
-                        <li class="list-group-item">
-                            <div style="margin-bottom: -2vh; margin-top: 2vh">
-                                {{ form.medicine_image|addcss:"form-control" }}
-                            </div>
-                        </li>
-                    </ul>
-                    <br>
-                    <br>
-                    <div style="margin-bottom: 5vh" class="d-grid gap-2">
-                        <button class="btn btn-success" type="submit">Post</button>
-                    </div>
-                </form>
-                {% include 'bootstrap4/layout/help_text_and_errors.html' %}
+            <div class="col-12 col-md-12 col-lg-6">
+                <img style="width: 100%; margin-bottom: 10vh; margin-top: 2vh; border-radius: 5%;" src="{% static '/images/independence.jpg' %}"
+                 alt="no img">
             </div>
         </div>
     </div>
-</body>
-    {##}
+
+
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel"><b>Creating Post</b></h5>

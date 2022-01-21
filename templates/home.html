@@ -27,23 +27,19 @@
                          src="{% static '/images/5.jpg' %}" alt="logo2">
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-7"
-                     style="background: white; font-family: 'Zen Antique', serif; margin-top: 2vh">
+                     style="background: white;, serif; margin-top: 2vh">
                     <h1 style="font-family: 'Rakkas', cursive;">Welcome {{ user.first_name }}, to
                         <div style="color: red">Medonations.</div>
                     </h1>
-                    <p>On behalf of the Medonations team we would like to thank you for creating an account and helping in building a brighter future for all the people of Lebanon </p>
-                    <h2 style="font-family: 'Rakkas', cursive; text-align: center">"The darkest hour of the night comes just before the
-                        dawn."</h2>
-                    <h2 style="font-family: 'Rakkas', cursive; text-align: center">Paulo Coelho</h2>
-                    <h1 style="font-family: 'Rakkas', cursive; text-align: center">"إن الساعة الأكثر ظلمة هى الساعة التى تسبق شروق
-                        الشمس"</h1>
-                    <h2 style="font-family: 'Rakkas', cursive; text-align: center">باولو كويلو</h2>
-                    <br>
-                    <h2 style="font-family: 'Rakkas', cursive; text-align: center">"Love one another, but make not a bond of love: Let it rather be a moving sea between the shores of your souls."</h2>
-                    <h2 style="font-family: 'Rakkas', cursive; text-align: center">Gibran Khalil Gibran</h2>
-                    <h1 style="font-family: 'Rakkas', cursive; text-align: center">أحِبُوا بعضكم بعضاً, ولكن لا تقيدوا المحبة بقيود, بل لتكن المحبة بحراً متموجاً بين شواطئ نفوسكم</h1>
-                    <h2 style="font-family: 'Rakkas', cursive; text-align: center"> جبران خليل جبران</h2>
 
+                    <br>
+                    <form class="d-flex" action="{% url 'medicine_search' %}" method="get">
+                        <input name="q" class="form-control me-2" type="search" placeholder="Search for medicine"
+                               aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <br>
+                    <br>
                     <div class="d-grid gap-2 col-4 mx-auto ">
                         <a class="btn btn-success" style="font-family: 'Roboto', sans-serif;"
                            href="{% url "post_new" %}">New Post</a>
@@ -52,12 +48,28 @@
                         <a class="btn btn-dark" style="font-family: 'Roboto', sans-serif; margin-bottom: 5vh"
                            href="{% url "password_change_form" %}">Change my password</a>
                     </div>
+
+                    <p style="background: white; font-family: 'Zen Antique', serif;">On behalf of the Medonations team
+                        we would like to truly thank you for creating an account and helping
+                        in building a brighter future for all the people of Lebanon. </p>
+                    <p style="background: white; font-family: 'Zen Antique', serif;">Send us photos of you donating or
+                        receiving medicine
+                        and suggestions via instagram at <a href="https://www.instagram.com/medonations.lb/">medonations.lb</a>
+                        or via email at <a href="mailto: medonations.lb@gmail.com">medonations.lb@gmail.com</a> and
+                        spread the
+                        word so others can benefit.</p>
+                    <p style="background: white; font-family: 'Zen Antique', serif;">Thank you for being there for one
+                        another,</p>
+                    <p style="background: white; font-family: 'Zen Antique', serif;">Medonations Team</p>
+
+
                 </div>
+
 
             {% else %}
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     <img style="margin-left: auto;margin-right: auto;width: 100%;display: block"
-                         src="{% static '/images/Tryptique.jpg' %}" alt="logo2">
+                         src="{% static '/images/Tryptique2.jpg' %}" alt="logo2">
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"
                      style="background: white; font-family: 'Zen Antique', serif; margin-top: 2vh">
@@ -95,81 +107,27 @@
 
                         <a class="btn btn-primary" style="font-family: 'Roboto', sans-serif;"
                            href="{% url "signup" %}">Get Started</a>
+                        <a class="btn btn-success" style="font-family: 'Roboto', sans-serif;"
+                           href="{% url "login" %}">Log In</a>
                         <a class="btn btn-dark" style="font-family: 'Roboto', sans-serif; margin-bottom: 5vh"
                            href="{% url "about" %}">Learn more</a>
                     </div>
-                    {#                    <img style="display: block; margin-left: auto; margin-right: auto; width: 100%"#}
-                    {#                         src="{% static '/images/logo.png' %}" alt="">#}
+                    <p style="background: white; font-family: 'Zen Antique', serif;">
+                        Credit for artwork:
+                    <ul>
+                        <li>Joseph Matar -- <a href="https://lebanonart.com/">www.lebanonart.com</a></li>
+                        <li>Tiana Koundakjian -- tibytiana@gmail.com</li>
+                    </ul>
+                    </p>
                 </div>
+
+
+
+
 
 
             {% endif %}
         </div>
     </div>
-
-    {##}
-    {#    <div id="row" class="w3-row-padding">#}
-    {#        {% if user.is_authenticated %}#}
-    {#            <div class="w3-half">#}
-    {#                <img src="{% static '/images/wall_art.jpg' %}" alt="" class="home-image-center">#}
-    {#            </div>#}
-    {#        {% else %}#}
-    {#            <div class="w3-half">#}
-    {#                <img src="{% static '/images/wall_art.png' %}" alt="" class="home-image-center">#}
-    {#            </div>#}
-    {#        {% endif %}#}
-    {#        <div class="w3-half">#}
-    {#        IF USER IS LOGGED IN#}
-    {#            {% if user.is_authenticated %}#}
-    {#                <h1 style="font-size:4em" class="font-for-english">Welcome {{ user.first_name }} !</h1>#}
-    {#                <br>#}
-    {#                <br>#}
-    {#                <div id="search_bar" class="input-group mb-5">#}
-    {#                    <form action="{% url 'medicine_search' %}" method="get">#}
-    {#                        <label>#}
-    {#                            <input style="width: 920px;height: 54px;" name="q" placeholder="Search For Medicine" type="text" class="form-control">#}
-    {#                        </label>#}
-    {#                        <button style="height: 50px" id="search_button" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>#}
-    {#                    </form>#}
-    {#                </div>#}
-    {#                <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'post_new' %}"#}
-    {#                   class="btn btn-info btn-lg btn-block" role="button">Donate / Request Medicine</a>#}
-    {#                <br>#}
-    {#                <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'my_posts' %}"#}
-    {#                   class="btn btn-warning btn-lg btn-block" role="button">My Posts</a>#}
-    {#                <br>#}
-    {#                <img style="margin-left: auto;margin-right: auto;width: 100%;display: block"#}
-    {#                     src="{% static '/images/wall_art.png' %}" alt="logo2">#}
-    {#                IF USER IS NOT LOGGED IN#}
-    {#            {% else %}#}
-    {#                <h1 style="font-size:4em" class="font-for-english">Welcome to Medonations!</h1>#}
-    {#                <br>#}
-    {#                <br>#}
-    {#                <h3 style="font-size:2.5em" class="english-writing">A website where you can easily donate or request#}
-    {#                    medicine from fellow Lebanese</h3>#}
-    {#                <br>#}
-    {#                <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'signup' %}"#}
-    {#                   class="btn btn-info btn-lg btn-block" role="button">Get Started</a>#}
-    {#                <br>#}
-    {#                <div class="w3-row-padding">#}
-    {#                    <div class="w3-half">#}
-    {#                        <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'login' %}"#}
-    {#                           class="btn btn-primary btn-block" role="button">Log In</a>#}
-    {#                    </div>#}
-    {#                    <div class="w3-half">#}
-    {#                        <a style="font-family:'Markazi Text', serif;font-size: 25px" href="{% url 'about' %}"#}
-    {#                           class="btn btn-secondary btn-block" role="button">About Us / How It Works</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <br>#}
-    {#                <br>#}
-    {#                <br>#}
-    {##}
-    {#            {% endif %}#}
-    {##}
-    {#        </div>#}
-    {#    </div>#}
-
-
 
 {% endblock content %}

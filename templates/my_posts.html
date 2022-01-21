@@ -25,7 +25,7 @@
     </style>
 
 {% endblock %}
-{% block content %}@
+{% block content %}
     {% if object_list.count == 0 %}
 
         <div style="width: 100%; margin-top: 25vh" class="col d-flex justify-content-center">
@@ -41,16 +41,27 @@
             </div>
         </div>
 
-    {% endif %}
 
 
+    {% else %}
 
+
+    <div style="width: 100%; margin-top: 2vh" class="col d-flex justify-content-center">
+                    <div class="card mb-3"
+                         style="width: 30rem; margin-left: 2vh; margin-right: 2vh">
+                        <div class="card-header">
+                            <div style="text-align: center">
+                                <h5 style="font-size: 3vh" class="card-title"><b>My Posts</b></h5>
+                            </div>
+                        </div>
+                    </div>
+    </div>
 
     <div style="margin-top: 2vh; margin-bottom: 1vh" class="card-group col d-flex justify-content-center">
         <ul class="list-group" style="list-style-type: none;margin-right: 2vh; margin-left: 2vh">
             {% for object in object_list %}
                 <li>
-                    <div class="card" style="width: 100%">
+                    <div class="card" style="max-width: 100%">
                         {% if object.post_type == 'Donate' %}
                             <div class="card-header">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -72,7 +83,7 @@
                         <img style="vertical-align: middle;border-style: none;width: 400px;height: 400px;object-fit: contain;"
                              id="post-image" src="{{ object.medicine_image.url }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><b>{{ object.medicine_name }}</b></h5>
+                            <h5 class="card-title" style="width: 20rem"><b>{{ object.medicine_name }}</b></h5>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -93,7 +104,7 @@
                                         <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"/>
                                     </svg>
                                     Quantity: {{ object.medicine_quantity }}</li>
-                                <li class="list-group-item">
+                                <li class="list-group-item" style="width: 23rem">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                          class="bi bi-geo-alt" viewBox="0 0 16 16">
                                         <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
@@ -101,6 +112,7 @@
                                     </svg>
                                     {{ object.address }}</li>
                             </ul>
+
                             <br>
                             <p class="card-text"><small class="text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -111,6 +123,8 @@
 
                                 Uploaded on {{ object.post_date_time }}</small>
                             </p>
+
+
 
                             <div class="d-grid gap-2">
                                 <a href="{% url 'post_detail' object.pk %}" class="btn btn-primary btn-block"
@@ -130,6 +144,9 @@
             {% endfor %}
         </ul>
     </div>
+
+    {% endif %}
+
 
     <div>
         <nav aria-label="Page navigation example">

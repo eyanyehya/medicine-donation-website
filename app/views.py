@@ -42,14 +42,20 @@ class MedicineSearchView(LoginRequiredMixin, ListView):
     model = MedicinePost
     template_name = 'search_for_medicine_results.html'
     context_object_name = 'posts'
-    paginate_by = 1
+    paginate_by = 10
     login_url = 'login'
 
     def get_queryset(self):  # new
         query = self.request.GET.get('q')
+
+        # rstrip() removes the whitespace after the end of the input
         object_list = MedicinePost.objects.filter(
-            Q(medicine_name__contains=query)
+            Q(medicine_name__contains=query.rstrip().lstrip())
         )
+        if len(query.rstrip().lstrip()) == 0:
+            return MedicinePost.objects.filter(
+                Q(medicine_name__contains="nullNone")
+            )
         return object_list
 
 
@@ -72,30 +78,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     login_url = 'login'
 
     success_url = reverse_lazy('post_create_success')
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     # context['addresses'] = Post.objects.filter(address__exact=Post.address)
-    #     context['addresses'] = MedicinePost.objects.filter(address=self.model.address)
-    #     return context
-
-    # def get(self, request, *args, **kwargs):
-    #     form = self.form_class()
-    #     return render(request, self.template_name, {'form': form})
-
-    # def post(self, request, *args, **kwargs):
-    #     form = self.form_class(request.POST, request.FILES)
-    #     # userform = settings.AUTH_USER_MODEL(request.POST, request.FILES)
-    #     # form = MedicineForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         form.instance.user = request.user
-    #         form.save()
-    #         messages.success(request, request.user)
-    #         # form.instance.user = form.save(commit=True)
-    #         # form.save()
-    #         return redirect(self.success_url)
-    #     else:
-    #         return render(request, self.template_name, {'form': form})
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -143,13 +125,8 @@ class MyPostsListView(LoginRequiredMixin, ListView):
     model = MedicinePost
     template_name = 'my_posts.html'
     login_url = 'login'
-    paginate_by = 1
+    paginate_by = 10
     context_object_name = "posts"
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['myPosts'] = MedicinePost.objects.filter(author=self.request.user)
-    #     return context
 
     def get_queryset(self):
         user = self.request.user

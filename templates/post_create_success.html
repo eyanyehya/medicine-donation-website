@@ -7,25 +7,36 @@
 {% endblock %}
 {% block content %}
 
-
-    <div style="width: 100%; margin-top: 25vh" class="col d-flex justify-content-center">
-        <div class="card" style="width: 21.5rem;">
-            <div class="card-body">
-                <div style="" class="alert alert-success" role="alert">
-                    You have successfully created a post!
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-6">
+                <div style="width: 100%; margin-top: 15vh" class="col d-flex justify-content-center">
+                    <div class="card" style="width: 21.5rem;">
+                        <div class="card-body">
+                            <div style="" class="alert alert-success" role="alert">
+                                You have successfully created a post!
+                            </div>
+                        </div>
+                        <a style="margin-bottom: 1vh; margin-right: 1vh; margin-left: 1vh" href="{% url 'home' %}"
+                           class="btn btn-dark btn-block"
+                           role="button">Home</a>
+                        <a style="margin-bottom: 1vh; margin-right: 1vh; margin-left: 1vh" href="{% url 'post_new' %}"
+                           class="btn btn-primary btn-block"
+                           role="button">Create another post</a>
+                        <a style="margin-bottom: 1vh; margin-right: 1vh; margin-left: 1vh" href="{% url 'my_posts' %}"
+                           class="btn btn-primary btn-block"
+                           role="button">My posts</a>
+                    </div>
                 </div>
             </div>
-            <a style="margin-bottom: 1vh; margin-right: 1vh; margin-left: 1vh" href="{% url 'home' %}"
-               class="btn btn-dark btn-block"
-               role="button">Home</a>
-            <a style="margin-bottom: 1vh; margin-right: 1vh; margin-left: 1vh" href="{% url 'post_new' %}"
-               class="btn btn-primary btn-block"
-               role="button">Create another post</a>
-            <a style="margin-bottom: 1vh; margin-right: 1vh; margin-left: 1vh" href="{% url 'my_posts' %}"
-               class="btn btn-primary btn-block"
-               role="button">My posts</a>
+            <div class="col-12 col-md-12 col-lg-6">
+                <img style="width: 100%; margin-bottom: 10vh; margin-top: 2vh; border-radius: 5%;"
+                     src="{% static '/images/6.jpg' %}"
+                     alt="no img">
+            </div>
         </div>
     </div>
+
 
 
 {% endblock content %}
