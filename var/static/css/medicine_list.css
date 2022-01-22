@@ -1,0 +1,132 @@
+.text-gry {
+    color: #aaa;
+}
+
+h5 {
+    color: #0088dd;
+}
+
+.row{
+    margin-top: 50px;
+}
+
+.list-group-item{
+    /*box-shadow: 5px 0 15px -4px rgba(31, 73, 125, 0.8), -5px 0 8px -4px rgba(31, 73, 125, 0.8);*/
+}
+
+ul {
+    height: 100px;
+}
+
+#post-type-donate {
+    color: #ffffff;
+    font-family: 'Exo 2', sans-serif;
+    margin-left: 45%;
+}
+
+#post-type-receive {
+    color: #ffffff;
+    font-family: 'Exo 2', sans-serif;
+    margin-left: 45%;
+}
+
+.type-of-post-donate {
+    background-color: #52b788;
+    border-radius: 20px;
+    /*border-bottom-left-radius:50%;*/
+    /*border-bottom-right-radius:50%;*/
+}
+
+.type-of-post-receive {
+    background-color: #f94144;
+    border-radius: 20px;
+    /*border-bottom-left-radius:50%;*/
+    /*border-bottom-right-radius:50%;*/
+}
+
+.post-detail-card-donate {
+    width: 600px;
+    height: 1100px;
+}
+
+.post-detail-card-receive {
+    width: 600px;
+    height: 1100px;
+}
+
+#photo-detail {
+    max-width: 200px;
+}
+
+#post-detail-medicine {
+    font-family: 'Kaisei HarunoUmi', serif;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/*POST DETAIL STUFF*/
+
+/*POST EDIT BUTTON STUFF*/
+
+#post-edit-button {
+  background-color: cadetblue;
+  box-shadow: 0 5px 0 darkblue;
+  color: white;
+  padding: 1em 3em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#post-edit-button:hover {
+  background-color: darkcyan;
+}
+
+#post-edit-button:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+/*POST DELETE BUTTON STUFF*/
+
+
+#post-delete-button {
+  margin-left: 300px;
+  background-color: red;
+  box-shadow: 0 5px 0 darkred;
+  color: white;
+  padding: 1em 4em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#post-delete-button:hover {
+  background-color: #ce0606;
+}
+
+#post-delete-button:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+#list_of_medicines {
+    margin-top: 70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,6 +8,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.utils.safestring import mark_safe
 from phonenumber_field.modelfields import PhoneNumberField
+from cloudinary.models import CloudinaryField
 
 # token
 google_maps_access_token = 'AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk'
@@ -21,7 +22,8 @@ class MedicinePost(models.Model):
     # expiry_date = models.CharField(max_length=200, default='')
     expiry_date = models.CharField('Expiry Date', blank=True, null=True, max_length=200)
     post_date_time = models.DateTimeField(default=datetime.now, blank=True)
-    medicine_image = models.ImageField(upload_to='images/', blank=False)
+    # medicine_image = models.ImageField(upload_to='images/', blank=False)
+    medicine_image = CloudinaryField('image')
     phone_number = PhoneNumberField(null=False, blank=False)
     extra_info = models.TextField(null=True, blank=True)
 

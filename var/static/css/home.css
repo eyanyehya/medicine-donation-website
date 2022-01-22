@@ -1,0 +1,119 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden
+}
+
+@media (max-width: 1000px) {
+  html, body {
+  margin: 0;
+  height: 100%;
+  overflow: scroll;
+}
+
+}
+
+
+.font-for-english {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    color: black;
+    display: inline;
+}
+
+#font-for-arabic {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    color: black;
+    display: inline;
+}
+
+/*.column {*/
+/*  float: left;*/
+/*  width: 50%;*/
+/*}*/
+
+#row {
+    margin-top: 7.5vh;
+}
+
+#image_home{
+    margin-top: 17.5vh;
+    margin-bottom: 0;
+}
+
+#text_home{
+    margin-top: 3vh;
+}
+
+.english-writing {
+    font-family: 'Markazi Text', serif;
+}
+
+.arabic-writing {
+    font-family: 'Mirza', serif;
+}
+
+.home-image-center {
+    /*display: block;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*margin-top: 100px;*/
+    /*max-width: 60%;*/
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    /*height: 700px;*/
+}
+
+#home-page-image {
+    width: 60%;
+    /*height: 800px;*/
+}
+
+#home-page-get-started {
+    margin-top: 200px;
+    height: 1000px;
+    width: 60%;
+    display: block;
+    margin-left: 10%;
+}
+
+.home-page-writing {
+    margin-left: -60px;
+    width: 1000px;
+}
+
+#home-page-get-started:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.language-list {
+    display: inline;
+}
+
+#get-started-button {
+  background-color: #427ec4;
+  box-shadow: 0 5px 0 darkblue;
+  color: white;
+  padding: 1em 3em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+

@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phonenumber_field'
+    'phonenumber_field',
+    'storages',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -134,23 +139,37 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Base url to serve media files
-MEDIA_URL = "/media/"
+cloudinary.config(
+    cloud_name="hoai7k3wk",
+    api_key="518121863444119",
+    api_secret="ZkfVGp6dbRZ27EOyCooq3dlVJSM"
+)
 
-# Path where media is stored
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# DEFAULT_FILE_STORAGE = 'core.storages.MediaStore'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "var", 'static')
+# STATIC_URL = '/static/'
+#
+# # Base url to serve media files
+# MEDIA_URL = '/media/'
+#
+# # Path where media is stored
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-TIME_ZONE = 'Asia/Beirut'
+# TIME_ZONE = 'Asia/Beirut'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # new
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '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'
