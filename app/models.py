@@ -9,9 +9,14 @@ from django.contrib.auth import get_user_model
 from django.utils.safestring import mark_safe
 from phonenumber_field.modelfields import PhoneNumberField
 from cloudinary.models import CloudinaryField
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # token
-google_maps_access_token = 'AIzaSyDONGu-q34eWXxxV_eS4wpaT5RpB4kHyZk'
+GOOGLE_KEY = os.getenv("GOOGLE_KEY")
+google_maps_access_token = GOOGLE_KEY
 
 
 # Create your models here.
