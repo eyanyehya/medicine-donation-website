@@ -35,6 +35,7 @@ CLOUDINARY_API_KEY = os.getenv("CLOUDINARY_API_KEY")
 CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
 EMAIL = os.getenv("EMAIL")
 SENDGRID_PASS = os.getenv("SENDGRID_PASS")
+GOOGLE_KEY = os.getenv("GOOGLE_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

@@ -7,7 +7,6 @@ from django.urls import reverse
 import geocoder
 
 # token
-mapbox_access_token = 'pk.eyJ1IjoiZXlhbnllaHlhIiwiYSI6ImNrcm5uem9kOTB5cW0yc252M3AxN2drNzMifQ.IIwBFoL3ox2l3rOwsvZe_w'
 
 
 class CustomUser(AbstractUser):

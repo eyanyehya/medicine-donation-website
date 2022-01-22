@@ -83,6 +83,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(PostCreateView, self).get_context_data(**kwargs)
+        context['google_key'] = settings.GOOGLE_KEY
+        return context
+
 
 class PostUpdateView(UpdateView):
     model = MedicinePost
@@ -98,6 +103,11 @@ class PostUpdateView(UpdateView):
         if obj.author != self.request.user:
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(PostUpdateView, self).get_context_data(**kwargs)
+        context['google_key'] = settings.GOOGLE_KEY
+        return context
 
 
 class PostDeleteView(DeleteView):
@@ -119,6 +129,11 @@ class PostDetailView(DetailView):
     template_name = 'post_detail.html'
     context_object_name = 'post'
     login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context['google_key'] = settings.GOOGLE_KEY
+        return context
 
 
 class MyPostsListView(LoginRequiredMixin, ListView):
