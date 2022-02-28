@@ -30,13 +30,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
-CLOUDINARY_NAME=os.getenv("CLOUDINARY_NAME")
+CLOUDINARY_NAME = os.getenv("CLOUDINARY_NAME")
 CLOUDINARY_API_KEY = os.getenv("CLOUDINARY_API_KEY")
 CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
 EMAIL = os.getenv("EMAIL")
 SENDGRID_PASS = os.getenv("SENDGRID_PASS")
 GOOGLE_KEY = os.getenv("GOOGLE_KEY")
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -151,9 +150,16 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+#
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 cloudinary.config(
     cloud_name=CLOUDINARY_NAME,
