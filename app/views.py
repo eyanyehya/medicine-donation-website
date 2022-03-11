@@ -48,9 +48,11 @@ class MedicineSearchView(LoginRequiredMixin, ListView):
     def get_queryset(self):  # new
         query = self.request.GET.get('q')
 
+        print("query is " + query)
+
         # rstrip() removes the whitespace after the end of the input
         object_list = MedicinePost.objects.filter(
-            Q(medicine_name__contains=query.rstrip().lstrip())
+            Q(medicine_name__contains=query.rstrip().lstrip()) | Q(medicine_name__contains=query.lower().rstrip().lstrip())
         )
         if len(query.rstrip().lstrip()) == 0:
             return MedicinePost.objects.filter(
