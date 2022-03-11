@@ -52,7 +52,7 @@ class MedicineSearchView(LoginRequiredMixin, ListView):
 
         # rstrip() removes the whitespace after the end of the input
         object_list = MedicinePost.objects.filter(
-            Q(medicine_name__contains=query.rstrip().lstrip()) | Q(medicine_name__contains=query.lower().rstrip().lstrip())
+            Q(medicine_name__contains=query.rstrip().lstrip()) | Q(medicine_name__contains=query.lower().rstrip().lstrip()) | Q(medicine_name__contains=query.upper().rstrip().lstrip())
         )
         if len(query.rstrip().lstrip()) == 0:
             return MedicinePost.objects.filter(
