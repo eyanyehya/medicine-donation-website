@@ -2,6 +2,10 @@
 
 Medonations is a web application created using Django, HTML, CSS, Javascript, and Google Maps API that allows people in Lebanon to donate and request non-prescription medicine from other fellow Lebanon people. 
 
+# Link to live website 
+https://medonations.herokuapp.com/
+
+
 # Project Screenshots
 
 
@@ -41,30 +45,25 @@ Medonations is a web application created using Django, HTML, CSS, Javascript, an
  </table>
  
  # Installation and Setup Instructions
- Download the project and open using Xcode. 
- You will need to set up your own FireBase project to host the apps configurations and data since the app won't compile without the GoogleService-Info.plist file that should be in the Resources folder.
- I am not pushing my GoogleService-Info.plist file as it will allow you to write data which I dont want. 
- Once you create your firebase project and have your GoogleService-Info.plist file add it into the resources folder as seen below:
  
- <img width="221" alt="image" src="https://user-images.githubusercontent.com/64728439/200913827-9084df8b-0191-4fd7-acfa-d8794e3f9892.png">
+ Note: 
+ Medonations is launched using Heroku and uses Cloudinary to store images and Google Maps API to show locations and so running the project locally on your computer will involve you setting up your own databases as I've hidden the secret codes I use for obvious security reasons. If you really want to test it locally you can set up a Heroku project and add the following key value pairs in the CONFIG VARS section found in your Heroku projects settings:
  
- And then you'll be able to compile and run the app and read and write data (events, etc.) 
+<ul>
+  <li>SECRET_KEY</li>
+  <li>CLOUDINARY_NAME (name of Cloudinary database)</li>
+  <li>CLOUDINARY_API_KEY (Cloudinary database API key)</li>
+  <li>CLOUDINARY_API_SECRET (Cloudinary database API secret)</li>
+  <li>GOOGLE_KEY (Google API key)</li>
+</ul>
  
 # Reflection
-This is a project I started working on over the summer of 2022 and I'm planning on updating in the near future, adding more features. The app, which was inspired by seeing my younger
-brother not being able to book a soccer pitch because of a few friends cancelling, allows users to create and join sports events for a variety of 
-sports ranging from soccer to surfing to martial arts. Each event a user creates is highly personalized to their needs with information including the location of the event,
-age required, experience level, number of players needed and more. Although as of now these specifications don't stop other users that dont meet them from 
-joining the event, I plan on using this data to filter out events and make the list of active events more tailored towards the current user. So only showing 
-events around them, where their age meets the specification, etc. This is all to come in future updates. 
+Medonations is a project I started working on in the summer of 2021 while on summer vacation back home in Lebanon. The country was (and still is) in a bad socio-economic state and faces many social issues. At that time there was a large shortage of medicine in the country following the Beirut explosion and devaluation of the currency. At the same time people had anticipated this shortage and had panic bought large amount of medicine that they wouldn't use and would end up being thrown away. So the concept serves as a solution to both these issues. The ones who over bought would list their non perscription meds on the site and people in need would get in contact with them via phone. Also the ones who are in need can create request posts requesting specific medicines that can be seen by others and donated. 
 
-My end goal for Athlima is to connect people with similar passions together and create new friendships and memories along the way. 
+In terms of technical skills I created the website using the Django web framework (HTML, CSS, Javascript) as well as the Google Maps API (for displaying maps and geolocation for location autocompletion). I launched the webiste using Heroku and Cloudinary as the backend database to store images. 
 
-The app is designed using Swift and following the MVVM (Model, View, View-Model) design pattern which allowed me to structure my code into specific parts all of which interacted together to perform complex tasks from writing and fetching
-data from FireBase to setting up maps showing where each event is taking place. Having users creating and joining events and interacting with each 
-other gave rise to special privacy related considerations and design choices I had to make to ensure that the app complied with Apple's privacy 
-guidelines. I see great potential for the idea which is why I'm still currently working on it and planning to launch some updates in the near future. 
-Updates that allow users to create private friend groups, send message invitations to others as well as involve personal trainers and a verification + point system, improving trust between users and opening the door for potential monetization.
+Being the first webiste I launch I faced many challenges along the way. Some included integrating the Google Maps API into the project, making content persistent (using a DB), creating a simple design that would look and work well on any device (phones, computers, tablets), and actually launching the webiste for people to use and benefit from. 
+
 
 
 
